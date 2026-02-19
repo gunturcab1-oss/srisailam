@@ -97,9 +97,10 @@ const Hero: React.FC = () => {
     <div id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden scroll-mt-20">
       <div className="absolute inset-0">
         <img 
-          src="/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
+          src="https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
           className="w-full h-full object-cover" 
           alt="Srisailam Temple"
+          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-gray-900"></div>
       </div>
@@ -257,7 +258,12 @@ const FleetSection: React.FC = () => {
           {FLEET_DATA.map((car) => (
             <div key={car.id} className="group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500">
               <div className="h-72 overflow-hidden relative">
-                <img src={car.image} alt={car.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <img 
+                  src={car.image} 
+                  alt={car.name} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                  referrerPolicy="no-referrer"
+                />
                 <div className="absolute top-6 left-6 bg-white text-black text-xs font-black px-4 py-2 rounded-full shadow-lg uppercase tracking-widest">
                   {car.type}
                 </div>
@@ -293,7 +299,12 @@ const TouristPlacesSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {TOURIST_PLACES.map((place) => (
             <div key={place.id} className="relative group rounded-[3rem] overflow-hidden h-[30rem] shadow-2xl">
-              <img src={place.image} alt={place.name} className="absolute inset-0 w-full h-full object-cover brightness-50 group-hover:brightness-75 transition-all duration-700" />
+              <img 
+                src={place.image} 
+                alt={place.name} 
+                className="absolute inset-0 w-full h-full object-cover brightness-50 group-hover:brightness-75 transition-all duration-700" 
+                referrerPolicy="no-referrer"
+              />
               <div className="absolute inset-0 p-12 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/20 to-transparent">
                 <h3 className="text-4xl font-black mb-4 group-hover:text-yellow-400 transition-colors">{place.name}</h3>
                 <p className="text-gray-300 text-lg max-w-xl opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
@@ -397,9 +408,10 @@ const App: React.FC = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-yellow-400 rounded-[3rem] rotate-3 -z-10"></div>
               <img 
-                src="/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
+                src="https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
                 className="w-full rounded-[3rem] shadow-2xl relative z-10" 
                 alt="Reliable Taxi"
+                referrerPolicy="no-referrer"
               />
             </div>
           </div>

@@ -7,7 +7,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Swift Dzire',
     type: 'Sedan',
     capacity: '4+1 Seater',
-    image: '/image.png',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/image.png',
     description: 'Perfect for small families and budget-friendly travel.'
   },
   {
@@ -15,7 +15,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Toyota Innova',
     type: 'SUV',
     capacity: '6+1 Seater',
-    image: '/Toyota-Innova-Crysta-GX-Variant-Front-Three-Quarters.jpeg',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/Toyota-Innova-Crysta-GX-Variant-Front-Three-Quarters.jpeg',
     description: 'Classic comfort for family groups with ample luggage space.'
   },
   {
@@ -23,7 +23,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Innova Crysta',
     type: 'Premium SUV',
     capacity: '7+1 Seater',
-    image: '/inova images.jpg',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/inova%20images.jpg',
     description: 'Luxury travel experience with premium interiors and ride quality.'
   },
   {
@@ -31,7 +31,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Mahindra Xylo',
     type: 'MUV',
     capacity: '7+1 Seater',
-    image: '/DSC05193.JPG',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/DSC05193.JPG',
     description: 'Spacious and robust, ideal for group travel on ghat roads.'
   },
   {
@@ -39,7 +39,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Force Toofan',
     type: 'Multi-Utility Van',
     capacity: '12+1 Seater',
-    image: '/6660d8670e4025c6bac778f78848fa2d.jpg',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/6660d8670e4025c6bac778f78848fa2d.jpg',
     description: 'Best for large groups and pilgrimage parties.'
   }
 ];
@@ -49,25 +49,25 @@ export const TOURIST_PLACES: Place[] = [
     id: 'mallikarjuna',
     name: 'Mallikarjuna Swamy Temple',
     description: 'One of the twelve Jyotirlingas, this ancient temple is the main attraction of Srisailam.',
-    image: '/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg'
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg'
   },
   {
     id: 'bhramaramba',
     name: 'Bhramaramba Devi Temple',
     description: 'One of the eighteen Shakti Peethas, located within the main temple complex.',
-    image: '/temple_rEEq67u4_202408201723250.jpg'
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/temple_rEEq67u4_202408201723250.jpg'
   },
   {
     id: 'dam',
     name: 'Srisailam Dam',
     description: 'A massive dam built across the Krishna River, offering breathtaking views.',
-    image: '/download.jpg'
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/download.jpg'
   },
   {
     id: 'patala-ganga',
     name: 'Patala Ganga',
     description: 'A holy bathing place where pilgrims take a dip in the Krishna River.',
-    image: '/download (1).jpg'
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/download%20(1).jpg'
   }
 ];
 
