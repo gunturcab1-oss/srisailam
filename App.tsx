@@ -397,7 +397,7 @@ const App: React.FC = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-yellow-400 rounded-[3rem] rotate-3 -z-10"></div>
               <img 
-                src="https://images.unsplash.com/photo-1541899481282-d53bffe3c15d?auto=format&fit=crop&q=80&w=1200" 
+                src="/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
                 className="w-full rounded-[3rem] shadow-2xl relative z-10" 
                 alt="Reliable Taxi"
               />
