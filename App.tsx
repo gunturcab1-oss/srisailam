@@ -97,7 +97,7 @@ const Hero: React.FC = () => {
     <div id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden scroll-mt-20">
       <div className="absolute inset-0">
         <img 
-          src="/images/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
+          src="https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
           className="w-full h-full object-cover" 
           alt="Srisailam Temple"
           referrerPolicy="no-referrer"
@@ -408,7 +408,7 @@ const App: React.FC = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-yellow-400 rounded-[3rem] rotate-3 -z-10"></div>
               <img 
-                src="/images/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
+                src="https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
                 className="w-full rounded-[3rem] shadow-2xl relative z-10" 
                 alt="Reliable Taxi"
                 referrerPolicy="no-referrer"
