@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { SEO_PAGES } from '../constants';
+import { motion, AnimatePresence } from 'motion/react';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -163,10 +164,23 @@ const Footer: React.FC = () => {
 };
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const location = useLocation();
+  
   return (
-    <div className="bg-white">
+    <div className="bg-white min-h-screen flex flex-col">
       <Navbar />
-      <main>{children}</main>
+      <AnimatePresence mode="wait">
+        <motion.main
+          key={location.pathname}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="flex-grow"
+        >
+          {children}
+        </motion.main>
+      </AnimatePresence>
       <Footer />
       
       {/* Floating Call Button for Mobile */}

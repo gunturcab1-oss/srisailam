@@ -3,6 +3,7 @@ import { FLEET_DATA, TOURIST_PLACES } from '../constants';
 import { askTravelAssistant } from '../services/geminiService';
 import { SearchResponse } from '../types';
 import { Layout } from '../components/Layout';
+import { motion } from 'motion/react';
 
 const Hero: React.FC = () => {
   return (
@@ -18,24 +19,44 @@ const Hero: React.FC = () => {
       </div>
       
       <div className="relative z-10 max-w-5xl mx-auto text-center px-4 pt-20">
-        <div className="inline-block px-4 py-1.5 mb-6 bg-yellow-400/20 backdrop-blur-md border border-yellow-400/30 rounded-full text-yellow-400 text-sm font-bold tracking-widest uppercase">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="inline-block px-4 py-1.5 mb-6 bg-yellow-400/20 backdrop-blur-md border border-yellow-400/30 rounded-full text-yellow-400 text-sm font-bold tracking-widest uppercase"
+        >
           Safe & Reliable Pilgrimage Taxi
-        </div>
-        <h1 className="text-5xl md:text-8xl font-black text-white mb-8 leading-tight tracking-tighter">
+        </motion.div>
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-5xl md:text-8xl font-black text-white mb-8 leading-tight tracking-tighter"
+        >
           Markapur Road <br/> to <span className="text-yellow-400">Srisailam</span>
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed"
+        >
           Premium transport from <span className="font-semibold text-white">Markapur Railway Station (MRK)</span>. 
           The nearest and most convenient gateway to Lord Mallikarjuna Swamy.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-5 justify-center">
+        </motion.p>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-5 justify-center"
+        >
           <a href="#fleet" className="bg-yellow-400 text-black px-10 py-5 rounded-2xl font-black text-xl hover:bg-yellow-500 transition-all shadow-2xl transform hover:-translate-y-1">
             Book a Taxi
           </a>
           <a href="#assistant" className="bg-white/10 backdrop-blur-lg text-white border border-white/20 px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/20 transition-all shadow-2xl">
             Ask Questions
           </a>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
@@ -75,12 +96,22 @@ const AISearchBox: React.FC = () => {
   return (
     <section id="assistant" className="py-24 bg-gray-50 scroll-mt-20">
       <div className="max-w-5xl mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
           <h2 className="text-4xl font-black mb-4">Travel Assistant</h2>
           <p className="text-gray-600 text-lg">Instant help for your journey from Markapur Road</p>
-        </div>
+        </motion.div>
 
-        <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-gray-100">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-gray-100"
+        >
           <form onSubmit={(e) => handleSearch(e)} className="relative mb-10">
             <input
               type="text"
@@ -150,7 +181,7 @@ const AISearchBox: React.FC = () => {
               </div>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -167,8 +198,15 @@ const FleetSection: React.FC = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {FLEET_DATA.map((car) => (
-            <div key={car.id} className="group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500">
+          {FLEET_DATA.map((car, idx) => (
+            <motion.div 
+              key={car.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500"
+            >
               <div className="h-72 overflow-hidden relative">
                 <img 
                   src={car.image} 
@@ -192,7 +230,7 @@ const FleetSection: React.FC = () => {
                   Book 9491320241
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -209,8 +247,15 @@ const TouristPlacesSection: React.FC = () => {
           <p className="text-gray-400 text-xl max-w-3xl mx-auto font-light leading-relaxed">Book a full day package starting from Markapur Road to visit all these sacred sites.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {TOURIST_PLACES.map((place) => (
-            <div key={place.id} className="relative group rounded-[3rem] overflow-hidden h-[30rem] shadow-2xl">
+          {TOURIST_PLACES.map((place, idx) => (
+            <motion.div 
+              key={place.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              className="relative group rounded-[3rem] overflow-hidden h-[30rem] shadow-2xl"
+            >
               <img 
                 src={place.image} 
                 alt={place.name} 
@@ -223,7 +268,7 @@ const TouristPlacesSection: React.FC = () => {
                   {place.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -238,7 +283,12 @@ const Home: React.FC = () => {
       <div id="about" className="py-32 bg-white scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="inline-block px-4 py-1.5 mb-6 bg-gray-100 rounded-full text-gray-600 text-sm font-bold tracking-widest uppercase">
                 Expert Drivers
               </div>
@@ -262,8 +312,14 @@ const Home: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="relative">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
               <div className="absolute -inset-4 bg-yellow-400 rounded-[3rem] rotate-3 -z-10"></div>
               <img 
                 src="https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg" 
@@ -271,7 +327,7 @@ const Home: React.FC = () => {
                 alt="Reliable Taxi"
                 referrerPolicy="no-referrer"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
