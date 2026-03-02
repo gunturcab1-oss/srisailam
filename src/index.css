@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .prose-yellow {
+    --tw-prose-links: theme('colors.yellow.600');
+    --tw-prose-invert-links: theme('colors.yellow.500');
+  }
+}

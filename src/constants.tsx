@@ -124,14 +124,14 @@ export const SEO_PAGES: SEOPageData[] = [
     url: "markapur-railway-station-to-srisailam-taxi",
     seoTitle: "Markapur Railway Station to Srisailam Taxi | 24/7 Pickup Service",
     metaDescription: "Book a taxi from Markapur Railway Station to Srisailam with safe drivers, affordable fares, and 24/7 pickup service for a comfortable temple journey.",
-    content: "Markapur Road (MRK) is the closest railway station to Srisailam. We provide dedicated taxi services for pilgrims arriving by train. Our drivers wait at the station exit to ensure a seamless transition from your train to our comfortable cabs. The 90km journey through the Nallamala forest is scenic and safe with our experienced drivers."
+    content: "Markapur Road (MRK) is the closest railway station to Srisailam, making it the most preferred choice for pilgrims arriving from Guntur, Vijayawada, or Hyderabad by train. We provide dedicated taxi services for pilgrims arriving by train, ensuring that your transition from the railway platform to our comfortable cabs is seamless and stress-free.\n\nOur drivers wait at the station exit with a personalized name board if requested. The 90km journey through the Nallamala forest is scenic and safe with our experienced drivers who are well-versed with the ghat road sections. We offer a variety of vehicles including Swift Dzire, Toyota Innova, and Innova Crysta to suit your family's needs. Our service is available 24/7, so even if your train arrives late at night or early in the morning, you can count on us for a safe ride to the temple town."
   },
   {
     topic: "Guntur to Srisailam Taxi",
     url: "guntur-to-srisailam-taxi",
     seoTitle: "Guntur to Srisailam Taxi Service | Professional Drivers",
     metaDescription: "Hire Guntur to Srisailam taxi service with professional drivers and comfortable vehicles for a safe and hassle-free temple trip.",
-    content: "Traveling from Guntur to Srisailam is a popular pilgrimage route. We offer reliable taxi services from Guntur city to Srisailam temple. Whether you're traveling with family or in a large group, our fleet of Sedans, SUVs, and Tempo Travelers are at your service."
+    content: "Traveling from Guntur to Srisailam is a popular pilgrimage route for many devotees in the coastal Andhra region. We offer reliable taxi services from Guntur city directly to Srisailam temple. The journey typically takes about 5-6 hours depending on traffic and road conditions.\n\nWhether you're traveling with family or in a large group, our fleet of Sedans, SUVs, and Tempo Travelers are at your service. Our drivers are professional, courteous, and highly experienced in handling the long-distance drive and the challenging ghat roads of the Nallamala forest. We provide both one-way drops and round-trip packages that include local sightseeing in Srisailam, ensuring you have a complete and satisfying pilgrimage experience without any transport worries."
   },
   {
     topic: "Hyderabad to Srisailam Taxi",
@@ -187,7 +187,7 @@ export const SEO_PAGES: SEOPageData[] = [
     url: "srisailam-temple-darshan-timings",
     seoTitle: "Srisailam Temple Darshan Timings | Plan Your Visit",
     metaDescription: "Check Srisailam temple darshan timings, sevas, and best visiting hours to plan your pilgrimage smoothly.",
-    content: "Plan your spiritual journey with the latest Srisailam temple darshan timings. Generally, the temple opens at 4:30 AM and closes at 10:00 PM, with specific slots for Sarva Darshan and Special Sevas. We help you reach the temple on time for your preferred slot."
+    content: "Planning your spiritual journey requires knowing the latest Srisailam temple darshan timings to ensure you don't miss the sacred rituals. Generally, the temple opens at 4:30 AM with the Suprabhata Seva and closes at 10:00 PM after the Pavalimpu Seva. \n\nThere are specific slots for Sarva Darshan (free darshan) and Special Darshan. During festival days like Maha Shivaratri or during the Karthika Masam, the timings might change and the queues can be quite long. We recommend checking the official temple website for any temporary changes. Our taxi service can help you reach the temple early in the morning for the first darshan or drop you off for the evening rituals, providing a flexible schedule that matches the temple's daily routine."
   },
   {
     topic: "Visiting Places in Srisailam",
