@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { SEO_PAGES } from '../constants';
+import { SEO_PAGES } from '@/constants';
 import { motion, AnimatePresence } from 'motion/react';
 
 const Navbar: React.FC = () => {
