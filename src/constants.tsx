@@ -7,7 +7,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Swift Dzire',
     type: 'Sedan',
     capacity: '4+1 Seater',
-    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/image.png',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/swift%20dzire.jpeg',
     description: 'Perfect for small families and budget-friendly travel.'
   },
   {
@@ -15,7 +15,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Toyota Innova',
     type: 'SUV',
     capacity: '6+1 Seater',
-    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/Toyota-Innova-Crysta-GX-Variant-Front-Three-Quarters.jpeg',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/toyota%20innova.jpeg',
     description: 'Classic comfort for family groups with ample luggage space.'
   },
   {
@@ -23,7 +23,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Innova Crysta',
     type: 'Premium SUV',
     capacity: '7+1 Seater',
-    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/inova%20images.jpg',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/crysta%20innova.jpeg',
     description: 'Luxury travel experience with premium interiors and ride quality.'
   },
   {
@@ -31,7 +31,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Mahindra Xylo',
     type: 'MUV',
     capacity: '7+1 Seater',
-    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/DSC05193.JPG',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/mahindra%20xylo.jpeg',
     description: 'Spacious and robust, ideal for group travel on ghat roads.'
   },
   {
@@ -39,7 +39,7 @@ export const FLEET_DATA: Car[] = [
     name: 'Force Toofan',
     type: 'Multi-Utility Van',
     capacity: '12+1 Seater',
-    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/6660d8670e4025c6bac778f78848fa2d.jpg',
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/force%20toofan.jpeg',
     description: 'Best for large groups and pilgrimage parties.'
   }
 ];
@@ -49,7 +49,7 @@ export const TOURIST_PLACES: Place[] = [
     id: 'mallikarjuna',
     name: 'Mallikarjuna Swamy Temple',
     description: 'One of the twelve Jyotirlingas, this ancient temple is the main attraction of Srisailam.',
-    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/srisaila-mallikarjuna-swamy-temple-mallikarjun-jyotirlinga-srisailam-tourism-entry-fee-timings-holidays-reviews-header.jpg'
+    image: 'https://raw.githubusercontent.com/gunturcab1-oss/srisailam/main/public/images/srisailam%20temple.jpeg'
   },
   {
     id: 'bhramaramba',
