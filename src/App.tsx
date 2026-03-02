@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '@/pages/Home';
-import SEOPage from '@/components/SEOPage';
+import Home from '@/pages/Home.tsx';
+import SEOPage from '@/components/SEOPage.tsx';
 
 const App: React.FC = () => {
   return (

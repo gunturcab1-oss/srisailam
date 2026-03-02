@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { FLEET_DATA, TOURIST_PLACES } from '@/constants';
-import { askTravelAssistant } from '@/services/geminiService';
-import { SearchResponse } from '@/types';
-import { Layout } from '@/components/Layout';
+import { FLEET_DATA, TOURIST_PLACES } from '@/constants.tsx';
+import { askTravelAssistant } from '@/services/geminiService.ts';
+import { SearchResponse } from '@/types.ts';
+import { Layout } from '@/components/Layout.tsx';
 import { motion } from 'motion/react';
 
 const Hero: React.FC = () => {

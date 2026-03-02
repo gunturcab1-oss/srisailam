@@ -1,5 +1,5 @@
 
-import { Car, Place, SEOPageData } from './types';
+import { Car, Place, SEOPageData } from './types.ts';
 
 export const FLEET_DATA: Car[] = [
   {

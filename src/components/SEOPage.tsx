@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { SEO_PAGES } from '@/constants';
-import { Layout } from '@/components/Layout';
+import { SEO_PAGES } from '@/constants.tsx';
+import { Layout } from '@/components/Layout.tsx';
 import { ArrowLeft, Phone, MapPin, Clock, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 
