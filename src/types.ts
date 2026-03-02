@@ -19,3 +19,11 @@ export interface SearchResponse {
   answer: string;
   sources?: { title: string; uri: string }[];
 }
+
+export interface SEOPageData {
+  topic: string;
+  url: string;
+  seoTitle: string;
+  metaDescription: string;
+  content?: string;
+}
