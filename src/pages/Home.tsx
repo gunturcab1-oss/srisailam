@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-5 justify-center"
         >
-          <a href="#fleet" className="bg-yellow-400 text-black px-10 py-5 rounded-2xl font-black text-xl hover:bg-yellow-500 transition-all shadow-2xl transform hover:-translate-y-1">
+          <a href="/book" className="bg-yellow-400 text-black px-10 py-5 rounded-2xl font-black text-xl hover:bg-yellow-500 transition-all shadow-2xl transform hover:-translate-y-1">
             Book a Taxi
           </a>
           <a href="#assistant" className="bg-white/10 backdrop-blur-lg text-white border border-white/20 px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/20 transition-all shadow-2xl">
