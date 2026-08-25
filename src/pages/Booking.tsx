@@ -4,20 +4,18 @@ import { Link } from 'react-router-dom';
 type Direction = 'markapur-srisailam' | 'srisailam-markapur';
 type TripType = 'one-way' | 'round-12' | 'round-24';
 
-type VehicleFare = {
+type Vehicle = {
   id: string;
   name: string;
   capacity: string;
-  oneWay: number | null;
-  round12: number | null;
 };
 
-const VEHICLES: VehicleFare[] = [
-  { id: 'dzire', name: 'Swift Dzire', capacity: '4+1 Seater', oneWay: 3000, round12: 4500 },
-  { id: 'innova', name: 'Toyota Innova', capacity: '6+1 Seater', oneWay: 4000, round12: 6500 },
-  { id: 'xylo', name: 'Mahindra Xylo', capacity: '7+1 Seater', oneWay: 4000, round12: 6500 },
-  { id: 'crysta', name: 'Innova Crysta', capacity: '7+1 Seater', oneWay: 5000, round12: 10000 },
-  { id: 'toofan', name: 'Force Toofan', capacity: '12+1 Seater', oneWay: null, round12: null },
+const VEHICLES: Vehicle[] = [
+  { id: 'dzire', name: 'Swift Dzire', capacity: '4+1 Seater' },
+  { id: 'innova', name: 'Toyota Innova', capacity: '6+1 Seater' },
+  { id: 'xylo', name: 'Mahindra Xylo', capacity: '7+1 Seater' },
+  { id: 'crysta', name: 'Innova Crysta', capacity: '7+1 Seater' },
+  { id: 'toofan', name: 'Force Toofan', capacity: '12+1 Seater' },
 ];
 
 const MARKAPUR_POINTS = [
@@ -65,12 +63,6 @@ const Booking: React.FC = () => {
 
   const selectedVehicle = VEHICLES.find((vehicle) => vehicle.id === vehicleId) || VEHICLES[0];
 
-  const fare = useMemo(() => {
-    if (tripType === 'one-way') return selectedVehicle.oneWay;
-    if (tripType === 'round-12') return selectedVehicle.round12;
-    return null;
-  }, [selectedVehicle, tripType]);
-
   const directionLabel = direction === 'markapur-srisailam'
     ? 'Markapur → Srisailam'
     : 'Srisailam → Markapur';
@@ -111,7 +103,6 @@ const Booking: React.FC = () => {
     }
 
     setError('');
-    const fareText = fare ? `₹${fare.toLocaleString('en-IN')}` : 'To be confirmed';
     const message = [
       'Hello Markapur Taxi, I want to book a cab.',
       '',
@@ -122,7 +113,6 @@ const Booking: React.FC = () => {
       `Date: ${travelDate}`,
       `Pickup Time: ${pickupTime}`,
       `Vehicle: ${selectedVehicle.name} (${selectedVehicle.capacity})`,
-      `Estimated Fare: ${fareText}`,
       '',
       `Passenger Name: ${name.trim()}`,
       `Mobile: ${phone.replace(/\D/g, '')}`,
@@ -233,29 +223,18 @@ const Booking: React.FC = () => {
             <div>
               <h2 className="text-2xl font-black mb-4">2. Choose Vehicle</h2>
               <div className="grid sm:grid-cols-2 gap-3">
-                {VEHICLES.map((vehicle) => {
-                  const displayFare = tripType === 'one-way' ? vehicle.oneWay : tripType === 'round-12' ? vehicle.round12 : null;
-                  return (
-                    <button
-                      key={vehicle.id}
-                      type="button"
-                      onClick={() => setVehicleId(vehicle.id)}
-                      className={`p-4 rounded-2xl border-2 text-left transition-all ${vehicleId === vehicle.id ? 'border-yellow-400 bg-yellow-50' : 'border-gray-200'}`}
-                    >
-                      <div className="font-black text-lg">{vehicle.name}</div>
-                      <div className="text-sm text-gray-500">{vehicle.capacity}</div>
-                      <div className="mt-2 font-black">
-                        {displayFare ? `₹${displayFare.toLocaleString('en-IN')}` : 'Fare confirmation required'}
-                      </div>
-                    </button>
-                  );
-                })}
+                {VEHICLES.map((vehicle) => (
+                  <button
+                    key={vehicle.id}
+                    type="button"
+                    onClick={() => setVehicleId(vehicle.id)}
+                    className={`p-4 rounded-2xl border-2 text-left transition-all ${vehicleId === vehicle.id ? 'border-yellow-400 bg-yellow-50' : 'border-gray-200'}`}
+                  >
+                    <div className="font-black text-lg">{vehicle.name}</div>
+                    <div className="text-sm text-gray-500">{vehicle.capacity}</div>
+                  </button>
+                ))}
               </div>
-              {tripType === 'round-24' && (
-                <p className="mt-3 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3">
-                  24-hour round-trip pricing will be confirmed before booking because the extra-day rate is vehicle-specific.
-                </p>
-              )}
             </div>
 
             <div>
@@ -307,11 +286,7 @@ const Booking: React.FC = () => {
               <div><span className="text-gray-400 block">Vehicle</span><strong>{selectedVehicle.name}</strong></div>
             </div>
             <div className="border-t border-white/10 mt-6 pt-6">
-              <span className="text-gray-400 text-sm block">Estimated fare</span>
-              <div className="text-4xl font-black text-yellow-400 mt-1">
-                {fare ? `₹${fare.toLocaleString('en-IN')}` : 'Confirm'}
-              </div>
-              <p className="text-xs text-gray-400 mt-3">Final fare and vehicle availability are confirmed by the taxi team before travel.</p>
+              <p className="text-sm text-gray-300">Our taxi team will verify vehicle availability and confirm your booking details directly with you.</p>
             </div>
             <a href="tel:+919491320241" className="block text-center mt-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 font-bold transition-colors">
               Call 9491320241
