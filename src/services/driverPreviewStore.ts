@@ -45,6 +45,7 @@ export const getDrivers = (): PreviewDriver[] => {
 export const saveDrivers = (drivers: PreviewDriver[]) => {
   if (typeof window === 'undefined') return;
   window.localStorage.setItem(DRIVER_STORE_KEY, JSON.stringify(drivers));
+  window.dispatchEvent(new Event('markapur-preview-drivers-changed'));
 };
 
 export const updateStoredDriver = (driverId: string, updates: Partial<PreviewDriver>) => {
