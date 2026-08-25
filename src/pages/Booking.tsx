@@ -70,6 +70,14 @@ const getDefaultPickupTime = (travelDate: string, now: Date) => {
   return minimum <= '18:00' ? minimum : '04:30';
 };
 
+const addMinutesToTime = (time: string, minutesToAdd: number) => {
+  const [hours, minutes] = time.split(':').map(Number);
+  const totalMinutes = hours * 60 + minutes + minutesToAdd;
+  const nextHours = Math.floor(totalMinutes / 60);
+  const nextMinutes = totalMinutes % 60;
+  return `${`${nextHours}`.padStart(2, '0')}:${`${nextMinutes}`.padStart(2, '0')}`;
+};
+
 const Booking: React.FC = () => {
   const pageOpenedAt = useMemo(() => new Date(), []);
   const earliestBookingDate = useMemo(() => getEarliestBookingDate(pageOpenedAt), [pageOpenedAt]);
@@ -87,6 +95,8 @@ const Booking: React.FC = () => {
   const [dropPoint, setDropPoint] = useState(SRISAILAM_POINTS[0]);
   const [travelDate, setTravelDate] = useState(initialTravelDate);
   const [pickupTime, setPickupTime] = useState(getDefaultPickupTime(initialTravelDate, pageOpenedAt));
+  const [returnDate, setReturnDate] = useState(initialTravelDate);
+  const [returnTime, setReturnTime] = useState('10:00');
   const [vehicleId, setVehicleId] = useState('dzire');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -114,12 +124,48 @@ const Booking: React.FC = () => {
     }
   };
 
+  const handleTripTypeChange = (nextTripType: TripType) => {
+    setTripType(nextTripType);
+    if (nextTripType === 'round-trip' && returnDate < travelDate) {
+      setReturnDate(travelDate);
+    }
+    if (nextTripType === 'round-trip' && returnDate === travelDate && returnTime <= pickupTime) {
+      const nextReturnTime = addMinutesToTime(pickupTime, 15);
+      if (nextReturnTime <= '18:00') {
+        setReturnTime(nextReturnTime);
+      }
+    }
+  };
+
   const handleTravelDateChange = (nextDate: string) => {
     setTravelDate(nextDate);
     const now = new Date();
     const minimumTime = getMinimumPickupTime(nextDate, now);
     if (nextDate === getLocalDate(now) && pickupTime < minimumTime) {
       setPickupTime(getDefaultPickupTime(nextDate, now));
+    }
+    if (returnDate < nextDate) {
+      setReturnDate(nextDate);
+    }
+  };
+
+  const handlePickupTimeChange = (nextTime: string) => {
+    setPickupTime(nextTime);
+    if (tripType === 'round-trip' && returnDate === travelDate && returnTime <= nextTime) {
+      const nextReturnTime = addMinutesToTime(nextTime, 15);
+      if (nextReturnTime <= '18:00') {
+        setReturnTime(nextReturnTime);
+      }
+    }
+  };
+
+  const handleReturnDateChange = (nextDate: string) => {
+    setReturnDate(nextDate);
+    if (nextDate === travelDate && returnTime <= pickupTime) {
+      const nextReturnTime = addMinutesToTime(pickupTime, 15);
+      if (nextReturnTime <= '18:00') {
+        setReturnTime(nextReturnTime);
+      }
     }
   };
 
@@ -133,7 +179,7 @@ const Booking: React.FC = () => {
     if (digits.length !== 10) return 'Please enter a valid 10-digit mobile number.';
     if (!comingFrom.trim()) return 'Please enter where you are coming from.';
     if (!/^\d{6}$/.test(pincode)) return 'Please enter a valid 6-digit pincode.';
-    if (!travelDate) return 'Please select a travel date.';
+    if (!travelDate) return 'Please select a pickup date.';
     if (travelDate < minimumDate) return 'Past dates are not available for booking. Please select an available future date.';
     if (travelDate > maximumDate) return 'Advance booking is available only up to 30 days.';
     if (pickupTime < '04:00' || pickupTime > '18:00') return 'Pickup time must be between 4:00 AM and 6:00 PM.';
@@ -141,6 +187,14 @@ const Booking: React.FC = () => {
     if (travelDate === getLocalDate(now)) {
       const minimumTime = getMinimumPickupTime(travelDate, now);
       if (pickupTime < minimumTime) return 'Please select a future pickup time.';
+    }
+
+    if (tripType === 'round-trip') {
+      if (!returnDate) return 'Please select a return date.';
+      if (returnDate < travelDate) return 'Return date cannot be before the pickup date.';
+      if (returnDate > maximumDate) return 'Return date must be within the 30-day advance booking window.';
+      if (returnTime < '04:00' || returnTime > '18:00') return 'Return time must be between 4:00 AM and 6:00 PM.';
+      if (returnDate === travelDate && returnTime <= pickupTime) return 'For a same-day round trip, return time must be later than pickup time.';
     }
 
     return '';
@@ -161,8 +215,10 @@ const Booking: React.FC = () => {
       `Trip: ${tripLabel}`,
       `Pickup: ${pickupPoint}`,
       `Drop: ${dropPoint}`,
-      `Date: ${travelDate}`,
+      `Pickup Date: ${travelDate}`,
       `Pickup Time: ${pickupTime}`,
+      tripType === 'round-trip' ? `Return Date: ${returnDate}` : '',
+      tripType === 'round-trip' ? `Return Time: ${returnTime}` : '',
       `Vehicle: ${selectedVehicle.name} (${selectedVehicle.capacity})`,
       '',
       `Passenger Name: ${name.trim()}`,
@@ -178,6 +234,7 @@ const Booking: React.FC = () => {
   const pickupOptions = direction === 'markapur-srisailam' ? MARKAPUR_POINTS : SRISAILAM_POINTS;
   const dropOptions = direction === 'markapur-srisailam' ? SRISAILAM_POINTS : MARKAPUR_POINTS;
   const minimumPickupTime = getMinimumPickupTime(travelDate, new Date());
+  const minimumReturnTime = returnDate === travelDate ? addMinutesToTime(pickupTime, 15) : '04:00';
 
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
@@ -223,7 +280,7 @@ const Booking: React.FC = () => {
                   <button
                     key={value}
                     type="button"
-                    onClick={() => setTripType(value)}
+                    onClick={() => handleTripTypeChange(value)}
                     className={`p-4 rounded-2xl border-2 font-bold transition-all ${tripType === value ? 'border-yellow-400 bg-yellow-50' : 'border-gray-200'}`}
                   >
                     {label}
@@ -246,7 +303,7 @@ const Booking: React.FC = () => {
                 </select>
               </label>
               <label className="block">
-                <span className="block text-sm font-bold mb-2">Travel date</span>
+                <span className="block text-sm font-bold mb-2">Pickup date</span>
                 <input
                   type="date"
                   min={getLocalDate(earliestBookingDate)}
@@ -264,11 +321,40 @@ const Booking: React.FC = () => {
                   min={minimumPickupTime}
                   max="18:00"
                   value={pickupTime}
-                  onChange={(e) => setPickupTime(e.target.value)}
+                  onChange={(e) => handlePickupTimeChange(e.target.value)}
                   className="w-full p-4 rounded-2xl border border-gray-300"
                 />
                 <span className="block text-xs text-gray-500 mt-1">Available pickup window: 4:00 AM to 6:00 PM. Past times are blocked for same-day bookings.</span>
               </label>
+
+              {tripType === 'round-trip' && (
+                <>
+                  <label className="block">
+                    <span className="block text-sm font-bold mb-2">Return date</span>
+                    <input
+                      type="date"
+                      min={travelDate}
+                      max={getLocalDate(maxBookingDate)}
+                      value={returnDate}
+                      onChange={(e) => handleReturnDateChange(e.target.value)}
+                      className="w-full p-4 rounded-2xl border border-gray-300"
+                    />
+                    <span className="block text-xs text-gray-500 mt-1">Return date must be the same as or after the pickup date.</span>
+                  </label>
+                  <label className="block">
+                    <span className="block text-sm font-bold mb-2">Return time</span>
+                    <input
+                      type="time"
+                      min={minimumReturnTime}
+                      max="18:00"
+                      value={returnTime}
+                      onChange={(e) => setReturnTime(e.target.value)}
+                      className="w-full p-4 rounded-2xl border border-gray-300"
+                    />
+                    <span className="block text-xs text-gray-500 mt-1">For same-day return, select a time later than the pickup time.</span>
+                  </label>
+                </>
+              )}
             </div>
 
             <div>
@@ -333,7 +419,10 @@ const Booking: React.FC = () => {
               <div><span className="text-gray-400 block">Trip</span><strong>{tripLabel}</strong></div>
               <div><span className="text-gray-400 block">Pickup</span><strong>{pickupPoint}</strong></div>
               <div><span className="text-gray-400 block">Drop</span><strong>{dropPoint}</strong></div>
-              <div><span className="text-gray-400 block">Date & time</span><strong>{travelDate} · {pickupTime}</strong></div>
+              <div><span className="text-gray-400 block">Pickup date & time</span><strong>{travelDate} · {pickupTime}</strong></div>
+              {tripType === 'round-trip' && (
+                <div><span className="text-gray-400 block">Return date & time</span><strong>{returnDate} · {returnTime}</strong></div>
+              )}
               <div><span className="text-gray-400 block">Vehicle</span><strong>{selectedVehicle.name}</strong></div>
             </div>
             <div className="border-t border-white/10 mt-6 pt-6">
