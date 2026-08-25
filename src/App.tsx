@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '@/pages/Home.tsx';
-import Booking from '@/pages/Booking.tsx';
+import BookingAssignmentPreview from '@/pages/BookingAssignmentPreview.tsx';
 import DriverRequest from '@/pages/DriverRequest.tsx';
 import AdminDrivers from '@/pages/AdminDrivers.tsx';
 import AdminBookings from '@/pages/AdminBookings.tsx';
@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/book" element={<Booking />} />
+      <Route path="/book" element={<BookingAssignmentPreview />} />
       <Route path="/driver-preview" element={<DriverRequest />} />
       <Route path="/admin-drivers" element={<AdminDrivers />} />
       <Route path="/admin-bookings" element={<AdminBookings />} />
