@@ -17,6 +17,18 @@ type Driver = {
   availability: AvailabilityStatus;
 };
 
+type EditForm = {
+  name: string;
+  username: string;
+  mobile: string;
+  vehicle: string;
+  vehicleNumber: string;
+  status: DriverStatus;
+  location: DriverLocation;
+  availability: AvailabilityStatus;
+  newPassword: string;
+};
+
 const locationLabels: Record<DriverLocation, string> = {
   markapur: 'Markapur',
   srisailam: 'Srisailam',
@@ -47,6 +59,8 @@ const AdminDrivers: React.FC = () => {
   const [drivers, setDrivers] = useState<Driver[]>([]);
   const [form, setForm] = useState(emptyForm);
   const [message, setMessage] = useState('');
+  const [editingDriverId, setEditingDriverId] = useState<string | null>(null);
+  const [editForm, setEditForm] = useState<EditForm | null>(null);
 
   const nextDriverId = useMemo(
     () => `DRV-${String(drivers.length + 1).padStart(3, '0')}`,
@@ -114,6 +128,78 @@ const AdminDrivers: React.FC = () => {
     );
   };
 
+  const startEdit = (driver: Driver) => {
+    setEditingDriverId(driver.id);
+    setEditForm({
+      name: driver.name,
+      username: driver.username,
+      mobile: driver.mobile,
+      vehicle: driver.vehicle,
+      vehicleNumber: driver.vehicleNumber,
+      status: driver.status,
+      location: driver.location,
+      availability: driver.availability,
+      newPassword: '',
+    });
+    setMessage('');
+  };
+
+  const cancelEdit = () => {
+    setEditingDriverId(null);
+    setEditForm(null);
+  };
+
+  const updateEditField = (field: keyof EditForm, value: string) => {
+    setEditForm((current) => current ? ({ ...current, [field]: value } as EditForm) : current);
+  };
+
+  const saveEdit = (driverId: string) => {
+    if (!editForm) return;
+
+    if (!editForm.name.trim() || !editForm.username.trim() || !editForm.mobile.trim() || !editForm.vehicleNumber.trim()) {
+      setMessage('Please complete all required driver details before saving.');
+      return;
+    }
+
+    if (!/^\d{10}$/.test(editForm.mobile.trim())) {
+      setMessage('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+
+    if (drivers.some(
+      (driver) => driver.id !== driverId && driver.username.toLowerCase() === editForm.username.trim().toLowerCase()
+    )) {
+      setMessage('That username is already used by another driver.');
+      return;
+    }
+
+    const passwordWasReset = Boolean(editForm.newPassword.trim());
+
+    setDrivers((current) =>
+      current.map((driver) =>
+        driver.id === driverId
+          ? {
+              ...driver,
+              name: editForm.name.trim(),
+              username: editForm.username.trim(),
+              mobile: editForm.mobile.trim(),
+              vehicle: editForm.vehicle,
+              vehicleNumber: editForm.vehicleNumber.trim().toUpperCase(),
+              status: editForm.status,
+              location: editForm.location,
+              availability: editForm.availability,
+            }
+          : driver
+      )
+    );
+
+    setMessage(passwordWasReset
+      ? `Driver ${editForm.name.trim()} updated. Password reset recorded for this preview.`
+      : `Driver ${editForm.name.trim()} updated successfully for this preview.`
+    );
+    cancelEdit();
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-8 md:py-12">
       <div className="mx-auto max-w-6xl">
@@ -123,7 +209,7 @@ const AdminDrivers: React.FC = () => {
               <p className="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-yellow-400">Admin Control</p>
               <h1 className="text-3xl font-black md:text-5xl">Driver Management</h1>
               <p className="mt-3 max-w-2xl text-gray-300">
-                Admin creates driver login access, tracks driver position and controls which bookings each driver can see.
+                Admin creates and edits driver login access, tracks driver position and controls which bookings each driver can see.
               </p>
             </div>
             <div className="rounded-2xl bg-white/10 px-5 py-4 text-sm">
@@ -284,87 +370,230 @@ const AdminDrivers: React.FC = () => {
               </div>
             ) : (
               <div className="space-y-4">
-                {drivers.map((driver) => (
-                  <div key={driver.id} className="rounded-3xl border border-gray-100 bg-gray-50 p-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <div className="flex flex-wrap items-center gap-2">
-                          <h3 className="text-lg font-black text-gray-900">{driver.name}</h3>
-                          <span className={`rounded-full px-3 py-1 text-xs font-bold ${driver.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                            {driver.status === 'active' ? 'Active' : 'Disabled'}
-                          </span>
-                          <span className={`rounded-full px-3 py-1 text-xs font-bold ${driver.availability === 'available' ? 'bg-blue-100 text-blue-700' : driver.availability === 'busy' ? 'bg-orange-100 text-orange-700' : 'bg-gray-200 text-gray-700'}`}>
-                            {availabilityLabels[driver.availability]}
-                          </span>
+                {drivers.map((driver) => {
+                  const isEditing = editingDriverId === driver.id && editForm;
+
+                  return (
+                    <div key={driver.id} className="rounded-3xl border border-gray-100 bg-gray-50 p-5">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h3 className="text-lg font-black text-gray-900">{driver.name}</h3>
+                            <span className={`rounded-full px-3 py-1 text-xs font-bold ${driver.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                              {driver.status === 'active' ? 'Active' : 'Disabled'}
+                            </span>
+                            <span className={`rounded-full px-3 py-1 text-xs font-bold ${driver.availability === 'available' ? 'bg-blue-100 text-blue-700' : driver.availability === 'busy' ? 'bg-orange-100 text-orange-700' : 'bg-gray-200 text-gray-700'}`}>
+                              {availabilityLabels[driver.availability]}
+                            </span>
+                          </div>
+                          <p className="mt-1 text-xs font-bold uppercase tracking-wider text-gray-400">{driver.id}</p>
                         </div>
-                        <p className="mt-1 text-xs font-bold uppercase tracking-wider text-gray-400">{driver.id}</p>
+                        <div className="flex gap-2">
+                          <button
+                            type="button"
+                            onClick={() => isEditing ? cancelEdit() : startEdit(driver)}
+                            className="rounded-xl border border-yellow-300 bg-yellow-50 px-3 py-2 text-xs font-bold text-gray-800"
+                          >
+                            {isEditing ? 'Cancel Edit' : 'Edit'}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => toggleStatus(driver.id)}
+                            className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-gray-700"
+                          >
+                            {driver.status === 'active' ? 'Disable' : 'Enable'}
+                          </button>
+                        </div>
                       </div>
-                      <button
-                        type="button"
-                        onClick={() => toggleStatus(driver.id)}
-                        className="rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-gray-700"
-                      >
-                        {driver.status === 'active' ? 'Disable' : 'Enable'}
-                      </button>
-                    </div>
 
-                    <div className="mt-4 rounded-2xl border border-yellow-200 bg-yellow-50 p-4">
-                      <div className="text-xs font-bold uppercase tracking-wider text-yellow-700">Current Driver Position</div>
-                      <div className="mt-1 text-lg font-black text-gray-900">📍 {locationLabels[driver.location]}</div>
-                    </div>
-
-                    <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
-                      <div className="rounded-2xl bg-white p-3">
-                        <div className="text-xs font-bold uppercase text-gray-400">Username</div>
-                        <div className="mt-1 font-semibold text-gray-800">{driver.username}</div>
+                      <div className="mt-4 rounded-2xl border border-yellow-200 bg-yellow-50 p-4">
+                        <div className="text-xs font-bold uppercase tracking-wider text-yellow-700">Current Driver Position</div>
+                        <div className="mt-1 text-lg font-black text-gray-900">📍 {locationLabels[driver.location]}</div>
                       </div>
-                      <div className="rounded-2xl bg-white p-3">
-                        <div className="text-xs font-bold uppercase text-gray-400">Mobile</div>
-                        <div className="mt-1 font-semibold text-gray-800">{driver.mobile}</div>
-                      </div>
-                      <div className="rounded-2xl bg-white p-3">
-                        <div className="text-xs font-bold uppercase text-gray-400">Vehicle</div>
-                        <div className="mt-1 font-semibold text-gray-800">{driver.vehicle}</div>
-                      </div>
-                      <div className="rounded-2xl bg-white p-3">
-                        <div className="text-xs font-bold uppercase text-gray-400">Vehicle No.</div>
-                        <div className="mt-1 font-semibold text-gray-800">{driver.vehicleNumber}</div>
+
+                      {isEditing ? (
+                        <div className="mt-4 rounded-3xl border-2 border-yellow-300 bg-white p-4">
+                          <div className="mb-4">
+                            <div className="text-xs font-bold uppercase tracking-wider text-yellow-700">Edit Driver</div>
+                            <div className="mt-1 font-black text-gray-900">Update {driver.id}</div>
+                          </div>
+
+                          <div className="grid gap-3 sm:grid-cols-2">
+                            <label className="block">
+                              <span className="mb-1 block text-xs font-bold text-gray-600">Driver Name *</span>
+                              <input
+                                value={editForm.name}
+                                onChange={(e) => updateEditField('name', e.target.value)}
+                                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-yellow-400"
+                              />
+                            </label>
+
+                            <label className="block">
+                              <span className="mb-1 block text-xs font-bold text-gray-600">Mobile *</span>
+                              <input
+                                value={editForm.mobile}
+                                onChange={(e) => updateEditField('mobile', e.target.value.replace(/\D/g, '').slice(0, 10))}
+                                inputMode="numeric"
+                                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-yellow-400"
+                              />
+                            </label>
+
+                            <label className="block">
+                              <span className="mb-1 block text-xs font-bold text-gray-600">Username *</span>
+                              <input
+                                value={editForm.username}
+                                onChange={(e) => updateEditField('username', e.target.value)}
+                                autoCapitalize="none"
+                                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-yellow-400"
+                              />
+                            </label>
+
+                            <label className="block">
+                              <span className="mb-1 block text-xs font-bold text-gray-600">New Password</span>
+                              <input
+                                type="password"
+                                value={editForm.newPassword}
+                                onChange={(e) => updateEditField('newPassword', e.target.value)}
+                                placeholder="Leave blank to keep current"
+                                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-yellow-400"
+                              />
+                            </label>
+
+                            <label className="block">
+                              <span className="mb-1 block text-xs font-bold text-gray-600">Vehicle *</span>
+                              <select
+                                value={editForm.vehicle}
+                                onChange={(e) => updateEditField('vehicle', e.target.value)}
+                                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-yellow-400"
+                              >
+                                {FLEET_DATA.map((vehicle) => (
+                                  <option key={vehicle.id} value={vehicle.name}>{vehicle.name}</option>
+                                ))}
+                              </select>
+                            </label>
+
+                            <label className="block">
+                              <span className="mb-1 block text-xs font-bold text-gray-600">Vehicle Number *</span>
+                              <input
+                                value={editForm.vehicleNumber}
+                                onChange={(e) => updateEditField('vehicleNumber', e.target.value)}
+                                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm uppercase outline-none focus:border-yellow-400"
+                              />
+                            </label>
+
+                            <label className="block">
+                              <span className="mb-1 block text-xs font-bold text-gray-600">Current Location</span>
+                              <select
+                                value={editForm.location}
+                                onChange={(e) => updateEditField('location', e.target.value)}
+                                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-yellow-400"
+                              >
+                                {Object.entries(locationLabels).map(([value, label]) => (
+                                  <option key={value} value={value}>{label}</option>
+                                ))}
+                              </select>
+                            </label>
+
+                            <label className="block">
+                              <span className="mb-1 block text-xs font-bold text-gray-600">Availability</span>
+                              <select
+                                value={editForm.availability}
+                                onChange={(e) => updateEditField('availability', e.target.value)}
+                                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-yellow-400"
+                              >
+                                {Object.entries(availabilityLabels).map(([value, label]) => (
+                                  <option key={value} value={value}>{label}</option>
+                                ))}
+                              </select>
+                            </label>
+
+                            <label className="block sm:col-span-2">
+                              <span className="mb-1 block text-xs font-bold text-gray-600">Driver Access Status</span>
+                              <select
+                                value={editForm.status}
+                                onChange={(e) => updateEditField('status', e.target.value)}
+                                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2 text-sm outline-none focus:border-yellow-400"
+                              >
+                                <option value="active">Active</option>
+                                <option value="disabled">Disabled</option>
+                              </select>
+                            </label>
+                          </div>
+
+                          <div className="mt-4 flex gap-3">
+                            <button
+                              type="button"
+                              onClick={() => saveEdit(driver.id)}
+                              className="flex-1 rounded-xl bg-yellow-400 px-4 py-3 text-sm font-black text-black hover:bg-yellow-500"
+                            >
+                              Save Changes
+                            </button>
+                            <button
+                              type="button"
+                              onClick={cancelEdit}
+                              className="rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-bold text-gray-700"
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+                            <div className="rounded-2xl bg-white p-3">
+                              <div className="text-xs font-bold uppercase text-gray-400">Username</div>
+                              <div className="mt-1 font-semibold text-gray-800">{driver.username}</div>
+                            </div>
+                            <div className="rounded-2xl bg-white p-3">
+                              <div className="text-xs font-bold uppercase text-gray-400">Mobile</div>
+                              <div className="mt-1 font-semibold text-gray-800">{driver.mobile}</div>
+                            </div>
+                            <div className="rounded-2xl bg-white p-3">
+                              <div className="text-xs font-bold uppercase text-gray-400">Vehicle</div>
+                              <div className="mt-1 font-semibold text-gray-800">{driver.vehicle}</div>
+                            </div>
+                            <div className="rounded-2xl bg-white p-3">
+                              <div className="text-xs font-bold uppercase text-gray-400">Vehicle No.</div>
+                              <div className="mt-1 font-semibold text-gray-800">{driver.vehicleNumber}</div>
+                            </div>
+                          </div>
+
+                          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                            <label className="block">
+                              <span className="mb-2 block text-xs font-bold uppercase text-gray-500">Update Location</span>
+                              <select
+                                value={driver.location}
+                                onChange={(e) => updateDriverLocation(driver.id, e.target.value as DriverLocation)}
+                                className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold outline-none focus:border-yellow-400"
+                              >
+                                {Object.entries(locationLabels).map(([value, label]) => (
+                                  <option key={value} value={value}>{label}</option>
+                                ))}
+                              </select>
+                            </label>
+
+                            <label className="block">
+                              <span className="mb-2 block text-xs font-bold uppercase text-gray-500">Update Availability</span>
+                              <select
+                                value={driver.availability}
+                                onChange={(e) => updateDriverAvailability(driver.id, e.target.value as AvailabilityStatus)}
+                                className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold outline-none focus:border-yellow-400"
+                              >
+                                {Object.entries(availabilityLabels).map(([value, label]) => (
+                                  <option key={value} value={value}>{label}</option>
+                                ))}
+                              </select>
+                            </label>
+                          </div>
+                        </>
+                      )}
+
+                      <div className="mt-4 rounded-2xl bg-black px-4 py-3 text-sm text-white">
+                        Booking access: <span className="font-bold text-yellow-400">Admin-assigned trips only</span>
                       </div>
                     </div>
-
-                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                      <label className="block">
-                        <span className="mb-2 block text-xs font-bold uppercase text-gray-500">Update Location</span>
-                        <select
-                          value={driver.location}
-                          onChange={(e) => updateDriverLocation(driver.id, e.target.value as DriverLocation)}
-                          className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold outline-none focus:border-yellow-400"
-                        >
-                          {Object.entries(locationLabels).map(([value, label]) => (
-                            <option key={value} value={value}>{label}</option>
-                          ))}
-                        </select>
-                      </label>
-
-                      <label className="block">
-                        <span className="mb-2 block text-xs font-bold uppercase text-gray-500">Update Availability</span>
-                        <select
-                          value={driver.availability}
-                          onChange={(e) => updateDriverAvailability(driver.id, e.target.value as AvailabilityStatus)}
-                          className="w-full rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-semibold outline-none focus:border-yellow-400"
-                        >
-                          {Object.entries(availabilityLabels).map(([value, label]) => (
-                            <option key={value} value={value}>{label}</option>
-                          ))}
-                        </select>
-                      </label>
-                    </div>
-
-                    <div className="mt-4 rounded-2xl bg-black px-4 py-3 text-sm text-white">
-                      Booking access: <span className="font-bold text-yellow-400">Admin-assigned trips only</span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
