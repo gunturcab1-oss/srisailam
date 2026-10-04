@@ -223,5 +223,83 @@ export const SEO_PAGES: SEOPageData[] = [
     seoTitle: "North Indian Food in Markapur | Best Restaurants",
     metaDescription: "Discover the best North Indian food in Markapur including popular restaurants and tasty meal options for visitors.",
     content: "Markapur is a major transit point for pilgrims from all over India, including many from the northern states. To cater to their diverse palates, several restaurants in Markapur have specialized in serving authentic North Indian cuisine. From soft Rotis and Phulkas to rich Paneer curries and Dal Tadka, you can find a variety of dishes that will make you feel right at home.\n\nWe understand that after a long train journey, you might crave the familiar flavors of North Indian food. Our drivers are well-acquainted with the best restaurants in town that maintain high standards of hygiene and taste. We can recommend the top-rated spots where you can enjoy a satisfying North Indian meal before you embark on your 3-hour drive to Srisailam, ensuring you have a comfortable and pleasant start to your pilgrimage."
-  }
+  },
+{
+    topic: "Srisailam to Markapur Taxi",
+    url: "srisailam-to-markapur-taxi",
+    seoTitle: "Srisailam to Markapur Taxi | Safe Return Cab Service",
+    metaDescription: "Book a reliable Srisailam to Markapur taxi with experienced ghat-road drivers, comfortable vehicles, and timely railway station or town drop.",
+    content: "Travel comfortably from Srisailam to Markapur town or Markapur Road Railway Station with a private cab suited to your family or group. This return route passes through the Nallamala forest and Dornala, so planning your departure around forest-entry rules, road conditions, and your train time is important.\n\nChoose from Swift Dzire, Toyota Innova, Innova Crysta, Mahindra Xylo, or Force Trax Toofan AC. Share your pickup point, destination, passenger count, luggage, and preferred departure time when booking. For railway passengers, we recommend keeping a suitable time buffer and confirming the latest route conditions before leaving Srisailam."
+  },
+  {
+    topic: "Srisailam Travel Guide",
+    url: "srisailam-travel-guide",
+    seoTitle: "Srisailam Travel Guide | Temple, Route & Taxi Information",
+    metaDescription: "Plan your Srisailam trip with guidance on transport, temple visits, local sightseeing, weather, accommodation, and safe taxi travel.",
+    content: "Srisailam is an important pilgrimage destination in the Nallamala Hills, known for Sri Mallikarjuna Swamy and Bhramaramba Devi. Markapur Road Railway Station is a convenient rail gateway for many visitors travelling onward by road. A private taxi is useful for families, senior citizens, passengers with luggage, and groups who want direct pickup and flexible stops.\n\nPlan temple darshan and accommodation in advance during weekends, festivals, and Karthika Masam. Carry water, essential medicines, identification, and comfortable footwear. Mobile connectivity can vary along forest stretches. Temple schedules, forest-entry rules, boating, ropeway services, and local attraction access can change, so confirm official information shortly before travel."
+  },
+  {
+    topic: "Places to Visit in Srisailam",
+    url: "places-to-visit-in-srisailam",
+    seoTitle: "Places to Visit in Srisailam | Local Sightseeing Taxi",
+    metaDescription: "Discover popular places to visit in Srisailam, including sacred temples, Patala Ganga, viewpoints, the dam, and nearby spiritual attractions.",
+    content: "A Srisailam visit can include Sri Mallikarjuna Swamy Temple, Bhramaramba Devi Temple, Sakshi Ganapathi, Paladhara Panchadhara, Hatakeswaram, Sikharam, Patala Ganga, and viewpoints around Srisailam Dam. Availability and opening times may vary by season, weather, maintenance, and festival arrangements.\n\nA private sightseeing taxi helps families and groups cover selected locations at a comfortable pace. Tell us which places you want to visit, the number of passengers, and how much time you have. We will help plan a practical route while allowing sufficient time for darshan, meals, rest, and the return journey."
+  },
+  {
+    topic: "Hotels in Markapur",
+    url: "hotels-in-markapur",
+    seoTitle: "Hotels in Markapur | Stay Near Markapur Road Station",
+    metaDescription: "Find practical hotel and accommodation guidance in Markapur, with taxi pickup from Markapur Road Railway Station and onward travel to Srisailam.",
+    content: "Markapur offers lodges and hotels for travellers who need to rest before continuing to Srisailam or after arriving by a late train. When choosing accommodation, check its current reviews, distance from Markapur Road Railway Station, check-in policy, parking, air-conditioning, family-room availability, and 24-hour reception.\n\nHotel names, availability, and prices change frequently, so confirm directly with the property or a trusted booking platform before paying. Markapur Taxi can arrange railway-station pickup, hotel drop, and your onward cab to Srisailam. Share your hotel name and arrival time when booking so the driver can plan the pickup correctly."
+  },
+  {
+    topic: "Force Trax Toofan AC Rental in Markapur",
+    url: "force-trax-toofan-ac-rental-in-markapur",
+    seoTitle: "Force Trax Toofan AC Rental in Markapur | Group Taxi",
+    metaDescription: "Hire a Force Trax Toofan AC in Markapur for pilgrim groups, family trips, railway pickup, and comfortable travel to Srisailam.",
+    content: "Force Trax Toofan AC is a practical choice for larger families, pilgrim groups, and group transfers from Markapur Road Railway Station. It provides group seating in one vehicle and helps avoid coordinating multiple smaller cars. Final passenger and luggage capacity depends on the exact vehicle configuration, so confirm both details before booking.\n\nThe vehicle is available for Markapur to Srisailam trips, Srisailam return journeys, local temple travel, and customised group requirements. Share the passenger count, luggage, pickup point, travel date, and journey type to receive the appropriate vehicle confirmation and fare."
+  },
+  {
+    topic: "Innova Crysta Rental in Markapur",
+    url: "innova-crysta-rental-in-markapur",
+    seoTitle: "Innova Crysta Rental in Markapur | Premium Taxi Service",
+    metaDescription: "Book an Innova Crysta rental in Markapur for premium family travel, Srisailam trips, railway pickup, and comfortable long-distance journeys.",
+    content: "Toyota Innova Crysta is ideal for travellers who prefer premium comfort, generous cabin space, and a smooth ride. It suits family pilgrimages, business travel, railway-station pickup, and long-distance journeys from Markapur. Seating and luggage capacity can vary by vehicle configuration, so please confirm your requirements while booking.\n\nReserve the Crysta for one-way travel, round trips, Srisailam sightseeing, or customised outstation journeys. Share your pickup location, passenger count, luggage, date, and time for vehicle availability and transparent fare confirmation."
+  },
+  {
+    topic: "Innova Rental in Markapur",
+    url: "innova-rental-in-markapur",
+    seoTitle: "Innova Rental in Markapur | Family & Srisailam Taxi",
+    metaDescription: "Hire a Toyota Innova in Markapur for family trips, railway station pickup, Srisailam travel, and comfortable outstation journeys.",
+    content: "Toyota Innova is a dependable choice for families and small groups travelling from Markapur to Srisailam. It offers more passenger and luggage space than a sedan and is well suited to the forest and ghat-road journey when driven by an experienced local driver.\n\nYou can book an Innova for one-way drops, round trips, railway pickup, temple visits, and outstation travel. Confirm the number of passengers, luggage, pickup point, travel date, and waiting requirements so we can recommend the correct arrangement and fare."
+  },
+  {
+    topic: "Group Travel in Markapur",
+    url: "group-travel-in-markapur",
+    seoTitle: "Group Travel in Markapur | Family & Pilgrimage Vehicles",
+    metaDescription: "Plan group travel from Markapur with spacious vehicles for Srisailam pilgrimages, family functions, railway transfers, and outstation trips.",
+    content: "Markapur Taxi provides group transport for pilgrimages, family functions, railway transfers, temple visits, and outstation travel. Depending on group size and luggage, travellers can choose Innova, Innova Crysta, Mahindra Xylo, or Force Trax Toofan AC.\n\nFor a smooth group journey, share the exact passenger count, number of children and senior citizens, luggage quantity, pickup points, travel dates, and return plan. We can then recommend whether one large vehicle or multiple vehicles will be more comfortable and practical."
+  },
+  {
+    topic: "Maruti Swift Dzire Rental in Markapur",
+    url: "maruti-swift-dzire-rental-in-markapur",
+    seoTitle: "Maruti Swift Dzire Rental in Markapur | Sedan Taxi",
+    metaDescription: "Book a Maruti Swift Dzire rental in Markapur for affordable family travel, railway pickup, Srisailam drops, and local taxi service.",
+    content: "Maruti Swift Dzire is an economical sedan for couples, small families, and business travellers. It is convenient for Markapur Road Railway Station pickup, Markapur town travel, one-way Srisailam drops, and round trips with light luggage.\n\nBefore booking, confirm the number of passengers and luggage so the sedan is suitable for your journey. Share your pickup point, date, time, destination, and journey type to check availability and receive the fare."
+  },
+  {
+    topic: "Mahindra Xylo Rental in Markapur",
+    url: "mahindra-xylo-rental-in-markapur",
+    seoTitle: "Mahindra Xylo Rental in Markapur | Spacious Group Cab",
+    metaDescription: "Hire a Mahindra Xylo in Markapur for family groups, Srisailam travel, railway pickup, and comfortable outstation taxi journeys.",
+    content: "Mahindra Xylo is a spacious option for families and groups who want more seating and luggage room than a sedan. It is suitable for Markapur Road Railway Station transfers, Srisailam trips, local travel, and selected outstation journeys.\n\nSeating comfort depends on passenger count and luggage, so provide those details before confirming. You can book the vehicle for one-way travel, round trips, waiting packages, or customised group travel from Markapur."
+  },
+  {
+    topic: "Markapur Road Train Timings",
+    url: "markapur-train-timings",
+    seoTitle: "Markapur Road Train Timings | MRK Station Taxi Pickup",
+    metaDescription: "Plan your Markapur Road Railway Station arrival and taxi pickup for Srisailam, with guidance for checking current live train timings.",
+    content: "Markapur Road Railway Station uses the station code MRK. Because railway schedules, platform details, delays, and special trains can change, check your train's current information through the official Indian Railways NTES service or railway enquiry number 139 before starting your journey.\n\nWhen booking a station pickup, share the train number, travel date, expected arrival time, passenger count, and a working mobile number. Please update us if the train is delayed. Our driver can coordinate the pickup and take you to Markapur town, your hotel, or onward to Srisailam, subject to road and forest-entry conditions."
+  },
+
 ];
