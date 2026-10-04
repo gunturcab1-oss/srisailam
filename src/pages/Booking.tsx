@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 type Direction = 'markapur-srisailam' | 'srisailam-markapur';
@@ -79,6 +79,17 @@ const addMinutesToTime = (time: string, minutesToAdd: number) => {
 };
 
 const Booking: React.FC = () => {
+  useEffect(() => {
+    const title = 'Book Markapur to Srisailam Taxi Online | Markapur Taxi';
+    const description = 'Book a taxi online between Markapur and Srisailam. Select one-way or round trip, pickup point, date, time and vehicle.';
+    document.title = title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', 'https://www.markapurtaxi.com/book');
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://www.markapurtaxi.com/book');
+  }, []);
+
   const pageOpenedAt = useMemo(() => new Date(), []);
   const earliestBookingDate = useMemo(() => getEarliestBookingDate(pageOpenedAt), [pageOpenedAt]);
   const maxBookingDate = useMemo(() => {

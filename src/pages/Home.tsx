@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FLEET_DATA, TOURIST_PLACES } from '@/constants.tsx';
 import { askTravelAssistant } from '@/services/geminiService.ts';
 import { SearchResponse } from '@/types.ts';
@@ -277,6 +277,17 @@ const TouristPlacesSection: React.FC = () => {
 };
 
 const Home: React.FC = () => {
+  useEffect(() => {
+    const title = 'Markapur to Srisailam Taxi | Railway Station Cab Booking';
+    const description = 'Book Markapur to Srisailam taxi service from Markapur Road Railway Station. Choose Dzire, Innova, Crysta, Xylo or Force Toofan for safe family and group travel.';
+    document.title = title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', 'https://www.markapurtaxi.com/');
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://www.markapurtaxi.com/');
+  }, []);
+
   return (
     <Layout>
       <Hero />
