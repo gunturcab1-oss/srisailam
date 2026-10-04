@@ -156,7 +156,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="pt-10 border-t border-gray-200 text-center text-gray-400 text-sm">
-          <p>© 2024 Markapur Taxi Services. For darshan/accommodation, please visit the official Srisailam website.</p>
+          <p>© 2026 Markapur Taxi Services. For darshan/accommodation, please visit the official Srisailam website.</p>
         </div>
       </div>
     </footer>
