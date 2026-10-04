@@ -165,6 +165,15 @@ const Footer: React.FC = () => {
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
+
+  useEffect(() => {
+    const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+    gtag?.('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: location.pathname + location.search,
+    });
+  }, [location.pathname, location.search]);
   
   return (
     <div className="bg-white min-h-screen flex flex-col">
