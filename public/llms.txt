@@ -1,0 +1,21 @@
+# Markapur Taxi
+
+Markapur Taxi provides passenger taxi services from Markapur Road Railway Station and Markapur town to Srisailam, plus return journeys, vehicle rentals, group travel and local travel guidance.
+
+## Primary services
+- Markapur Road Railway Station to Srisailam taxi
+- Srisailam to Markapur taxi
+- Maruti Swift Dzire, Toyota Innova, Innova Crysta and Mahindra Xylo rentals
+- Force Trax Toofan AC for group travel
+- Railway station pickup and hotel transfer
+
+## Contact
+- Phone: +91 94913 20241
+- Website: https://www.markapurtaxi.com/
+- Online booking: https://www.markapurtaxi.com/book
+
+## Important information
+Fares, vehicle availability, railway schedules, temple timings, forest-entry rules and hotel availability can change. Visitors should confirm current details before travel.
+
+## Site map
+https://www.markapurtaxi.com/sitemap.xml
