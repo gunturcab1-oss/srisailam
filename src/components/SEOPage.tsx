@@ -7,6 +7,43 @@ import { motion } from 'motion/react';
 
 const SITE_URL = 'https://www.markapurtaxi.com';
 
+const CITY_TRAIN_GUIDES: Record<string, { stations: string; guidance: string }> = {
+  'bengaluru-to-srisailam-via-markapur': {
+    stations: 'KSR Bengaluru, Yesvantpur and SMVT Bengaluru',
+    guidance: 'Search for a suitable service to Markapur Road (MRK). If no convenient direct option appears for your date, compare connections with enough transfer time.'
+  },
+  'hubballi-to-srisailam-via-markapur': {
+    stations: 'SSS Hubballi Junction and nearby boarding stations',
+    guidance: 'Check services toward the Guntur–Nandyal corridor and confirm whether the selected train stops at Markapur Road (MRK).'
+  },
+  'tirupati-to-srisailam-via-markapur': {
+    stations: 'Tirupati and Renigunta Junction',
+    guidance: 'Compare direct and connecting trains to Markapur Road (MRK), allowing a comfortable transfer window when changing trains.'
+  },
+  'visakhapatnam-to-srisailam-via-markapur': {
+    stations: 'Visakhapatnam and Duvvada',
+    guidance: 'Compare services and connections through Vijayawada or Guntur for the onward journey to Markapur Road (MRK).'
+  },
+  'kochi-to-srisailam-via-markapur': {
+    stations: 'Ernakulam Junction, Ernakulam Town and Aluva',
+    guidance: 'Long-distance journeys may require a connection. Compare total travel time and allow sufficient time between trains before continuing to Markapur Road (MRK).'
+  },
+  'kolkata-to-srisailam-via-markapur': {
+    stations: 'Howrah Junction, Shalimar and Santragachi',
+    guidance: 'Compare southbound services and connections through Bhubaneswar, Vijayawada or Guntur before continuing to Markapur Road (MRK).'
+  },
+  'bhubaneswar-to-srisailam-via-markapur': {
+    stations: 'Bhubaneswar and Khurda Road Junction',
+    guidance: 'Compare southbound services and connections through Vijayawada or Guntur for travel toward Markapur Road (MRK).'
+  },
+  'varanasi-to-srisailam-via-markapur': {
+    stations: 'Varanasi Junction, Banaras and Pt. Deen Dayal Upadhyaya Junction',
+    guidance: 'Most journeys require careful connection planning. Compare routes through major junctions and allow a generous transfer window before continuing to Markapur Road (MRK).'
+  }
+};
+
+const CITY_GUIDE_URLS = new Set(Object.keys(CITY_TRAIN_GUIDES));
+
 const upsertMeta = (selector: string, attribute: 'name' | 'property', key: string, content: string) => {
   let element = document.head.querySelector<HTMLMetaElement>(selector);
   if (!element) {
@@ -141,16 +178,26 @@ const SEOPage: React.FC = () => {
               <div className="whitespace-pre-wrap">{page.content}</div>
             </div>
 
-            {page.url === 'bengaluru-to-srisailam-via-markapur' && (
-              <section aria-labelledby="markapur-stopover" className="mb-12">
-                <h2 id="markapur-stopover" className="text-2xl font-black mb-3">Hotel and food information in Markapur</h2>
-                <p className="text-gray-600 mb-6">Use these guides to plan rest, meals and your onward station pickup.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <Link to="/hotels-in-markapur" className="bg-gray-50 p-5 rounded-2xl border border-gray-100 hover:border-yellow-400 font-bold">Hotels in Markapur</Link>
-                  <Link to="/home-made-food-in-markapur" className="bg-gray-50 p-5 rounded-2xl border border-gray-100 hover:border-yellow-400 font-bold">Home Made Food in Markapur</Link>
-                  <Link to="/north-indian-food-in-markapur" className="bg-gray-50 p-5 rounded-2xl border border-gray-100 hover:border-yellow-400 font-bold">North Indian Food in Markapur</Link>
-                </div>
-              </section>
+            {CITY_GUIDE_URLS.has(page.url) && (
+              <>
+                <section aria-labelledby="train-timings" className="mb-12 bg-blue-50 p-7 rounded-3xl border border-blue-100">
+                  <h2 id="train-timings" className="text-2xl font-black mb-3">Train timings and connections</h2>
+                  <p className="text-gray-700 mb-3"><strong>Check departures from:</strong> {CITY_TRAIN_GUIDES[page.url].stations}.</p>
+                  <p className="text-gray-700 mb-5">{CITY_TRAIN_GUIDES[page.url].guidance}</p>
+                  <p className="text-sm text-gray-600 mb-5">Train numbers, running days, departure times and seat availability can change. Enter your actual journey date and destination code MRK in the official live enquiry before booking.</p>
+                  <a href="https://enquiry.indianrail.gov.in/mntes/" target="_blank" rel="noopener noreferrer" className="inline-flex bg-blue-700 text-white px-5 py-3 rounded-xl font-bold hover:bg-blue-800">Check official live train timings</a>
+                </section>
+
+                <section aria-labelledby="markapur-stopover" className="mb-12">
+                  <h2 id="markapur-stopover" className="text-2xl font-black mb-3">Hotel and food information in Markapur</h2>
+                  <p className="text-gray-600 mb-6">Use these guides to plan rest, meals and your onward station pickup.</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <Link to="/hotels-in-markapur" className="bg-gray-50 p-5 rounded-2xl border border-gray-100 hover:border-yellow-400 font-bold">Hotels in Markapur</Link>
+                    <Link to="/home-made-food-in-markapur" className="bg-gray-50 p-5 rounded-2xl border border-gray-100 hover:border-yellow-400 font-bold">Home Made Food in Markapur</Link>
+                    <Link to="/north-indian-food-in-markapur" className="bg-gray-50 p-5 rounded-2xl border border-gray-100 hover:border-yellow-400 font-bold">North Indian Food in Markapur</Link>
+                  </div>
+                </section>
+              </>
             )}
 
             <section aria-labelledby="booking-help" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
