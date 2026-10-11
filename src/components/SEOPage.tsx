@@ -7,38 +7,85 @@ import { motion } from 'motion/react';
 
 const SITE_URL = 'https://www.markapurtaxi.com';
 
-const CITY_TRAIN_GUIDES: Record<string, { stations: string; guidance: string }> = {
+type TrainTiming = {
+  number: string;
+  name: string;
+  route: string;
+  runs: string;
+  departure: string;
+  arrival: string;
+};
+
+const CITY_TRAIN_GUIDES: Record<string, { stations: string; note: string; trains: TrainTiming[] }> = {
   'bengaluru-to-srisailam-via-markapur': {
-    stations: 'KSR Bengaluru, Yesvantpur and SMVT Bengaluru',
-    guidance: 'Search for a suitable service to Markapur Road (MRK). If no convenient direct option appears for your date, compare connections with enough transfer time.'
+    stations: 'KSR Bengaluru and Yesvantpur',
+    note: 'Arrival after midnight is shown as next day. Special trains may operate only for a limited period.',
+    trains: [
+      { number: '18464', name: 'Prashanthi Express', route: 'KSR Bengaluru → Markapur Road', runs: 'Daily', departure: '13:40', arrival: '01:09 next day' },
+      { number: '02812', name: 'Yesvantpur–Bhubaneswar Special', route: 'Yesvantpur → Markapur Road', runs: 'Monday (special)', departure: '04:30', arrival: '14:09' }
+    ]
   },
   'hubballi-to-srisailam-via-markapur': {
-    stations: 'SSS Hubballi Junction and nearby boarding stations',
-    guidance: 'Check services toward the Guntur–Nandyal corridor and confirm whether the selected train stops at Markapur Road (MRK).'
+    stations: 'SSS Hubballi Junction',
+    note: 'Three scheduled direct options are shown. Confirm the running day printed on your ticket.',
+    trains: [
+      { number: '18048', name: 'Vasco da Gama–Shalimar Express', route: 'Hubballi → Markapur Road', runs: 'Tue, Thu, Fri, Sun', departure: '12:05', arrival: '22:29' },
+      { number: '17226', name: 'Amaravathi Express', route: 'Hubballi → Markapur Road', runs: 'Daily', departure: '13:00', arrival: '23:28' },
+      { number: '17329', name: 'Hubballi–Vijayawada Express', route: 'Hubballi → Markapur Road', runs: 'Daily', departure: '19:30', arrival: '06:51 next day' }
+    ]
   },
   'tirupati-to-srisailam-via-markapur': {
     stations: 'Tirupati and Renigunta Junction',
-    guidance: 'Compare direct and connecting trains to Markapur Road (MRK), allowing a comfortable transfer window when changing trains.'
+    note: 'The train starts at Tirupati at 19:25 and departs Renigunta at 19:50.',
+    trains: [
+      { number: '17262', name: 'Tirupati–Guntur Express', route: 'Tirupati → Markapur Road', runs: 'Daily', departure: '19:25', arrival: '04:16 next day' }
+    ]
   },
   'visakhapatnam-to-srisailam-via-markapur': {
     stations: 'Visakhapatnam and Duvvada',
-    guidance: 'Compare services and connections through Vijayawada or Guntur for the onward journey to Markapur Road (MRK).'
+    note: 'The weekly Howrah–Yesvantpur service boards at Duvvada; Prashanthi Express boards at Visakhapatnam.',
+    trains: [
+      { number: '18463', name: 'Prashanthi Express', route: 'Visakhapatnam → Markapur Road', runs: 'Daily', departure: '13:05', arrival: '22:50' },
+      { number: '22831', name: 'Howrah–Yesvantpur Superfast', route: 'Duvvada → Markapur Road', runs: 'Thursday', departure: '04:40', arrival: '13:08' }
+    ]
   },
   'kochi-to-srisailam-via-markapur': {
-    stations: 'Ernakulam Junction, Ernakulam Town and Aluva',
-    guidance: 'Long-distance journeys may require a connection. Compare total travel time and allow sufficient time between trains before continuing to Markapur Road (MRK).'
+    stations: 'Ernakulam Town (North)',
+    note: 'These are weekly special services and may be extended, changed or withdrawn. Confirm that the train is operating on your intended date.',
+    trains: [
+      { number: '07104', name: 'Kollam–Machilipatnam Special', route: 'Ernakulam Town → Markapur Road', runs: 'Sunday (special)', departure: '05:35', arrival: '05:28 next day' },
+      { number: '07184', name: 'Kollam Special', route: 'Ernakulam Town → Markapur Road', runs: 'Friday (special)', departure: '11:45', arrival: '11:03 next day' },
+      { number: '07182', name: 'Kollam–Kakinada Special', route: 'Ernakulam Town → Markapur Road', runs: 'Monday (special)', departure: '13:40', arrival: '13:43 next day' }
+    ]
   },
   'kolkata-to-srisailam-via-markapur': {
-    stations: 'Howrah Junction, Shalimar and Santragachi',
-    guidance: 'Compare southbound services and connections through Bhubaneswar, Vijayawada or Guntur before continuing to Markapur Road (MRK).'
+    stations: 'Howrah, Shalimar and Santragachi',
+    note: 'Different trains use different Kolkata-area stations. Confirm the boarding station carefully.',
+    trains: [
+      { number: '18063', name: 'Santragachi–Yelahanka AC Express', route: 'Santragachi → Markapur Road', runs: 'Thursday', departure: '12:50', arrival: '12:29 next day' },
+      { number: '22831', name: 'Howrah–Yesvantpur Superfast', route: 'Howrah → Markapur Road', runs: 'Wednesday', departure: '14:45', arrival: '13:08 next day' },
+      { number: '18047', name: 'Amaravati Express', route: 'Shalimar → Markapur Road', runs: 'Mon, Tue, Thu, Sat', departure: '23:10', arrival: '22:35 next day' }
+    ]
   },
   'bhubaneswar-to-srisailam-via-markapur': {
-    stations: 'Bhubaneswar and Khurda Road Junction',
-    guidance: 'Compare southbound services and connections through Vijayawada or Guntur for travel toward Markapur Road (MRK).'
+    stations: 'Bhubaneswar',
+    note: 'Prashanthi Express is the daily option. The other listed services run weekly or as specials.',
+    trains: [
+      { number: '18463', name: 'Prashanthi Express', route: 'Bhubaneswar → Markapur Road', runs: 'Daily', departure: '05:40', arrival: '22:50' },
+      { number: '22831', name: 'Howrah–Yesvantpur Superfast', route: 'Bhubaneswar → Markapur Road', runs: 'Wednesday', departure: '21:15', arrival: '13:08 next day' },
+      { number: '02811', name: 'Bhubaneswar–Yesvantpur Special', route: 'Bhubaneswar → Markapur Road', runs: 'Sunday (special)', departure: '19:15', arrival: '11:20 next day' }
+    ]
   },
   'varanasi-to-srisailam-via-markapur': {
     stations: 'Varanasi Junction, Banaras and Pt. Deen Dayal Upadhyaya Junction',
-    guidance: 'Most journeys require careful connection planning. Compare routes through major junctions and allow a generous transfer window before continuing to Markapur Road (MRK).'
+    note: 'No dependable direct train was identified. Use a connection at Vijayawada and leave a generous transfer buffer; do not treat the rows as one guaranteed through itinerary.',
+    trains: [
+      { number: '12670', name: 'Gangakaveri Express', route: 'Varanasi → Vijayawada', runs: 'Tue, Thu', departure: '01:20', arrival: '05:10 next day' },
+      { number: '16368', name: 'Kashi Tamil Express', route: 'Varanasi → Vijayawada', runs: 'Selected days', departure: '16:45', arrival: '20:30 next day' },
+      { number: '17330', name: 'Vijayawada–Hubballi Express', route: 'Vijayawada → Markapur Road', runs: 'Daily', departure: '13:10', arrival: '17:14' },
+      { number: '18463', name: 'Prashanthi Express', route: 'Vijayawada → Markapur Road', runs: 'Daily', departure: '19:35', arrival: '22:50' },
+      { number: '17215', name: 'Machilipatnam–Dharmavaram Express', route: 'Vijayawada → Markapur Road', runs: 'Daily', departure: '21:25', arrival: '00:49 next day' }
+    ]
   }
 };
 
@@ -181,11 +228,33 @@ const SEOPage: React.FC = () => {
             {CITY_GUIDE_URLS.has(page.url) && (
               <>
                 <section aria-labelledby="train-timings" className="mb-12 bg-blue-50 p-7 rounded-3xl border border-blue-100">
-                  <h2 id="train-timings" className="text-2xl font-black mb-3">Train timings and connections</h2>
-                  <p className="text-gray-700 mb-3"><strong>Check departures from:</strong> {CITY_TRAIN_GUIDES[page.url].stations}.</p>
-                  <p className="text-gray-700 mb-5">{CITY_TRAIN_GUIDES[page.url].guidance}</p>
-                  <p className="text-sm text-gray-600 mb-5">Train numbers, running days, departure times and seat availability can change. Enter your actual journey date and destination code MRK in the official live enquiry before booking.</p>
-                  <a href="https://enquiry.indianrail.gov.in/mntes/" target="_blank" rel="noopener noreferrer" className="inline-flex bg-blue-700 text-white px-5 py-3 rounded-xl font-bold hover:bg-blue-800">Check official live train timings</a>
+                  <h2 id="train-timings" className="text-2xl font-black mb-3">Train names and scheduled timings</h2>
+                  <p className="text-gray-700 mb-5"><strong>Boarding stations:</strong> {CITY_TRAIN_GUIDES[page.url].stations}</p>
+                  <div className="overflow-x-auto bg-white rounded-2xl border border-blue-100">
+                    <table className="w-full min-w-[720px] text-left text-sm">
+                      <thead className="bg-blue-900 text-white">
+                        <tr>
+                          <th className="p-4">Train</th>
+                          <th className="p-4">Route</th>
+                          <th className="p-4">Runs</th>
+                          <th className="p-4">Departure</th>
+                          <th className="p-4">Arrival</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {CITY_TRAIN_GUIDES[page.url].trains.map((train) => (
+                          <tr key={`${train.number}-${train.route}`} className="border-t border-gray-100">
+                            <td className="p-4 font-bold">{train.number} – {train.name}</td>
+                            <td className="p-4">{train.route}</td>
+                            <td className="p-4">{train.runs}</td>
+                            <td className="p-4 font-semibold">{train.departure}</td>
+                            <td className="p-4 font-semibold">{train.arrival}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-5"><strong>Important:</strong> {CITY_TRAIN_GUIDES[page.url].note} Railway timetables and special services can change, so confirm the schedule before travelling.</p>
                 </section>
 
                 <section aria-labelledby="markapur-stopover" className="mb-12">
