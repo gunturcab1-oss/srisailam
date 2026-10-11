@@ -141,6 +141,18 @@ const SEOPage: React.FC = () => {
               <div className="whitespace-pre-wrap">{page.content}</div>
             </div>
 
+            {page.url === 'bengaluru-to-srisailam-via-markapur' && (
+              <section aria-labelledby="markapur-stopover" className="mb-12">
+                <h2 id="markapur-stopover" className="text-2xl font-black mb-3">Hotel and food information in Markapur</h2>
+                <p className="text-gray-600 mb-6">Use these guides to plan rest, meals and your onward station pickup.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <Link to="/hotels-in-markapur" className="bg-gray-50 p-5 rounded-2xl border border-gray-100 hover:border-yellow-400 font-bold">Hotels in Markapur</Link>
+                  <Link to="/home-made-food-in-markapur" className="bg-gray-50 p-5 rounded-2xl border border-gray-100 hover:border-yellow-400 font-bold">Home Made Food in Markapur</Link>
+                  <Link to="/north-indian-food-in-markapur" className="bg-gray-50 p-5 rounded-2xl border border-gray-100 hover:border-yellow-400 font-bold">North Indian Food in Markapur</Link>
+                </div>
+              </section>
+            )}
+
             <section aria-labelledby="booking-help" className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               <div className="bg-yellow-50 p-8 rounded-3xl border border-yellow-100">
                 <div className="flex items-center gap-4 mb-4">
