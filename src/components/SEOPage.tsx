@@ -76,6 +76,18 @@ const CITY_TRAIN_GUIDES: Record<string, { stations: string; note: string; trains
       { number: '02811', name: 'Bhubaneswar–Yesvantpur Special', route: 'Bhubaneswar → Markapur Road', runs: 'Sunday (special)', departure: '19:15', arrival: '11:20 next day' }
     ]
   },
+  'patna-to-srisailam-via-markapur': {
+    stations: 'Patna Junction, Patliputra and Danapur',
+    note: 'No dependable direct train was identified. Use a connection at Vijayawada and leave a generous transfer buffer; the rows are separate journey legs, not one guaranteed through itinerary.',
+    trains: [
+      { number: '16602', name: 'Amrit Bharat Express', route: 'Patliputra → Vijayawada', runs: 'Selected days', departure: '00:50', arrival: '14:40 next day' },
+      { number: '22365', name: 'Danapur–SMVT Bengaluru Express', route: 'Danapur → Vijayawada', runs: 'Daily', departure: '14:45', arrival: '23:35 next day' },
+      { number: '12296', name: 'Sanghamitra Express', route: 'Danapur → Vijayawada', runs: 'Daily', departure: '20:15', arrival: '02:50 on Day 3' },
+      { number: '17330', name: 'Vijayawada–Hubballi Express', route: 'Vijayawada → Markapur Road', runs: 'Daily', departure: '13:10', arrival: '17:14' },
+      { number: '18463', name: 'Prashanthi Express', route: 'Vijayawada → Markapur Road', runs: 'Daily', departure: '19:35', arrival: '22:50' },
+      { number: '17215', name: 'Machilipatnam–Dharmavaram Express', route: 'Vijayawada → Markapur Road', runs: 'Daily', departure: '21:25', arrival: '00:49 next day' }
+    ]
+  },
   'varanasi-to-srisailam-via-markapur': {
     stations: 'Varanasi Junction, Banaras and Pt. Deen Dayal Upadhyaya Junction',
     note: 'No dependable direct train was identified. Use a connection at Vijayawada and leave a generous transfer buffer; do not treat the rows as one guaranteed through itinerary.',
