@@ -127,6 +127,246 @@ export const SEO_PAGES: SEOPageData[] = [
     content: "Markapur Road (MRK) is the closest railway station to Srisailam, making it the most preferred choice for pilgrims arriving from Guntur, Vijayawada, or Hyderabad by train. We provide dedicated taxi services for pilgrims arriving by train, ensuring that your transition from the railway platform to our comfortable cabs is seamless and stress-free.\n\nOur drivers wait at the station exit with a personalized name board if requested. The 90km journey through the Nallamala forest is scenic and safe with our experienced drivers who are well-versed with the ghat road sections. We offer a variety of vehicles including Swift Dzire, Toyota Innova, and Innova Crysta to suit your family's needs. Our service is available 24/7, so even if your train arrives late at night or early in the morning, you can count on us for a safe ride to the temple town."
   },
   {
+    topic: "Nearest Railway Station to Srisailam: Markapur Road (MRK)",
+    url: "nearest-railway-station-to-srisailam",
+    seoTitle: "Nearest Railway Station to Srisailam | Markapur Road MRK",
+    metaDescription: "Markapur Road (MRK) is the nearest practical railway station to Srisailam. Check distance, route, taxi pickup, buses, hotels, food and travel tips.",
+    updatedAt: "2026-10-23",
+    content: "Srisailam does not have its own railway station. For most pilgrims, Markapur Road Railway Station (MRK) is the nearest practical rail gateway to Srisailam. The onward road journey is approximately 85–90 km and normally takes about 2.5–3 hours, depending on the exact pickup point, traffic, weather, rest stops and current forest-road conditions.\n\nThis guide gives you the complete plan in one place: which station to choose, nearby railway station alternatives, the route from Markapur Road Railway Station to Srisailam, onward transport, train-arrival planning, late-night options, hotels and food in Markapur, vehicle selection, booking information and answers to common questions.",
+    quickFacts: [
+      { label: "Recommended railhead", value: "Markapur Road Railway Station (MRK)" },
+      { label: "Approximate road distance", value: "85–90 km to Srisailam" },
+      { label: "Usual driving time", value: "About 2.5–3 hours" },
+      { label: "Main road route", value: "Markapur → Dornala → Nallamala → Srisailam" },
+      { label: "Best for", value: "Families, pilgrims, groups and senior citizens" },
+      { label: "Station taxi booking", value: "Call 9491320241" }
+    ],
+    sections: [
+      {
+        id: "which-is-nearest-station",
+        title: "Which is the nearest railway station to Srisailam?",
+        paragraphs: [
+          "The straightforward answer is Markapur Road Railway Station, station code MRK. It is the nearest practical railway station for most travellers continuing to Srisailam by road. Markapur Road Railway Station is on the Guntur–Nandyal rail corridor and gives pilgrims a shorter final road journey than larger alternatives such as Nandyal or Kurnool.",
+          "Markapur Road Railway Station is outside the main temple town, so the journey does not finish when your train arrives. You must continue by taxi, bus or another road vehicle. A pre-booked station taxi is the simplest option when you are travelling with children, senior citizens, several bags or a group that wants to travel together.",
+          "Use the full station name and code—Markapur Road (MRK)—when searching for trains. Do not confuse it with a station inside Srisailam: Srisailam has no railway station."
+        ]
+      },
+      {
+        id: "nearby-stations-compared",
+        title: "Railway stations near Srisailam compared",
+        paragraphs: [
+          "A station may look suitable on a railway map but still be inconvenient for the last road connection. Distance, train availability, arrival time, local transport and the needs of your family all matter. For most rail passengers, MRK provides the most practical balance."
+        ],
+        table: {
+          headers: ["Railway station", "Approx. road distance", "When it may suit you", "Practical guidance"],
+          rows: [
+            ["Markapur Road (MRK)", "85–90 km", "Best overall choice for most pilgrims", "Recommended practical rail gateway; arrange taxi pickup or onward road transport."],
+            ["Tarlupadu (TLU)", "About 95–105 km", "Only when your selected train stops conveniently", "Smaller station with fewer practical onward choices; confirm pickup before travelling."],
+            ["Cumbum (CBM)", "About 105–115 km", "An alternative on the same rail corridor", "Useful for selected trains, but the onward journey is usually longer than from MRK."],
+            ["Nandyal (NDL)", "About 150–170 km", "Some Rayalaseema or connecting journeys", "Larger alternative for certain routes; expect a substantially longer road transfer."],
+            ["Kurnool City (KRNT)", "About 175–190 km", "When your train route strongly favours Kurnool", "Major alternative hub, but not the nearest station and the road journey is much longer."]
+          ],
+          note: "Distances are approximate and vary with the chosen road, pickup point and destination within Srisailam. Compare the train schedule and the complete door-to-door journey—not rail distance alone."
+        }
+      },
+      {
+        id: "markapur-road-to-srisailam-route",
+        title: "Markapur Road Railway Station to Srisailam: distance, route and time",
+        paragraphs: [
+          "The normal road journey from Markapur Road Railway Station to Srisailam covers approximately 85–90 km. A practical route is Markapur Road Railway Station to Markapur, then Dornala, followed by the Nallamala forest and ghat-road section into Srisailam. The drive generally takes around 2.5–3 hours.",
+          "The quoted time is a planning estimate, not a guarantee. Festival traffic, temple rush, rain, road work, wildlife movement, meal stops and current forest-entry controls can increase the journey time. The final stretch includes curves and forest roads, so a steady journey with an experienced local driver is more sensible than planning around a very tight temple or hotel check-in time."
+        ],
+        bullets: [
+          "Keep a buffer between your scheduled train arrival and any temple booking or fixed appointment.",
+          "Tell the driver in advance if you need breakfast, medicines, an ATM, a hotel stop or another passenger pickup in Markapur.",
+          "Mobile coverage can vary on forest stretches; save the driver’s number and essential booking details before departure.",
+          "Forest and ghat-road access rules can change. Confirm the current travel plan for late-night or early-morning arrivals."
+        ]
+      },
+      {
+        id: "train-planning",
+        title: "How to plan your train journey to Markapur Road Railway Station",
+        paragraphs: [
+          "Search for destination station MRK when checking your rail journey. Depending on your starting city and travel date, you may find a direct train or need a connection through a suitable junction such as Guntur, Vijayawada or another station on your route. Operating days, special services, platform information and arrival times can change, so use the schedule shown for your exact journey date before reserving the onward taxi.",
+          "The most important time for taxi planning is your expected arrival at Markapur Road Railway Station. Share the train number as well as the arrival time because the driver can identify the correct service if there is a delay. If you have a connecting train, leave a sensible transfer margin instead of creating an itinerary that depends on a short, risky connection."
+        ],
+        table: {
+          title: "Information to note from your railway ticket",
+          headers: ["Ticket detail", "Why it matters for the road transfer"],
+          rows: [
+            ["Train number and name", "Helps the pickup team identify the correct service and monitor the expected arrival."],
+            ["Journey date", "Prevents confusion when an overnight train reaches MRK on the following calendar day."],
+            ["Scheduled arrival at MRK", "Used to plan driver reporting time and your onward journey."],
+            ["Coach and passenger contact", "Makes it easier to coordinate after the train reaches the station."],
+            ["Delay updates", "Allows the pickup plan to be adjusted if the train is running late."]
+          ],
+          note: "For the site’s station information, use the Markapur Road train timings guide linked below. Always recheck time-sensitive railway details for your actual date of travel."
+        }
+      },
+      {
+        id: "onward-transport-options",
+        title: "How to travel from Markapur Road Railway Station to Srisailam",
+        paragraphs: [
+          "Your main choices are a pre-booked private taxi, public bus or locally arranged transport. The best choice depends on arrival time, passenger count, luggage, budget and whether anyone in the group needs extra comfort or assistance."
+        ],
+        table: {
+          headers: ["Option", "Best for", "Advantages", "Plan carefully for"],
+          rows: [
+            ["Pre-booked private taxi", "Families, groups, seniors, children and luggage", "Direct station pickup, one vehicle, flexible rest or food stops, hotel or temple-area drop", "Confirm fare, vehicle, pickup date and current late-night route conditions."],
+            ["Public bus", "Solo travellers with light luggage and flexible timing", "Usually a lower-cost option", "Station-to-bus-point transfer, waiting time, seat availability and schedule changes."],
+            ["Local vehicle arranged after arrival", "Travellers who have not pre-booked", "May be available near the station or town", "Vehicle suitability, fare clarity and availability—especially late at night or during festivals."],
+            ["Hotel stop in Markapur", "Late arrivals or passengers who want rest", "Sleep, freshen up and eat before the forest journey", "Hotel check-in rules, current room availability and next-day pickup time."]
+          ]
+        }
+      },
+      {
+        id: "railway-station-pickup",
+        title: "Markapur Road Railway Station taxi pickup: step-by-step",
+        paragraphs: [
+          "A confirmed pickup reduces uncertainty after a long train journey. Markapur Taxi can arrange pickup from Markapur Road Railway Station and drop you at a Srisailam hotel, the temple-area access point agreed at booking, or another permitted location."
+        ],
+        bullets: [
+          "Before travel: share the train number, arrival date, expected arrival time, passenger count, luggage and destination.",
+          "After boarding: send any important train-delay update and keep the booking phone available.",
+          "Before arrival: call or message when the train is approaching Markapur Road Railway Station, if network permits.",
+          "At the station: collect all luggage, move to the agreed exit or landmark and contact the assigned driver.",
+          "Before starting: confirm the passenger name, vehicle and destination, and discuss any planned food, hotel or medical stop."
+        ]
+      },
+      {
+        id: "late-night-arrivals",
+        title: "What to do if your train arrives late at night",
+        paragraphs: [
+          "Late arrival requires advance planning because the onward route includes a forest and ghat-road section where access conditions may be restricted. Do not assume that a train arriving at any hour can immediately continue to Srisailam. Share the exact train details before travel so the driver can advise a practical pickup and departure plan based on current conditions.",
+          "When an immediate onward trip is not practical, arrange a hotel or lodge in Markapur and continue after rest. This can also be the safer and more comfortable choice for children, elderly passengers and travellers who have completed a long overnight rail journey. Keep essential medicines, water, identification, charging cables and one change of clothing in an easily accessible bag."
+        ]
+      },
+      {
+        id: "hotels-and-food-in-markapur",
+        title: "Hotels, restaurants and useful stops in Markapur",
+        paragraphs: [
+          "Markapur is the practical place to rest, eat, buy essentials or meet other members of your group before continuing to Srisailam. Accommodation ranges from simple lodges to family rooms. Before paying, check current reviews, distance from Markapur Road Railway Station, check-in hours, air-conditioning, hot-water availability, parking, family-room arrangements and whether reception will be open when you arrive.",
+          "For food, travellers can look for Andhra meals, vegetarian dishes, breakfast and tiffin items, tea, packaged snacks and selected North Indian meals. Opening hours and quality can change, so choose a busy, hygienic restaurant and confirm that it is serving when you arrive. A light meal and drinking water are often more comfortable before the winding forest drive. Ask in advance if you want a food stop or packed meal."
+        ],
+        bullets: [
+          "Useful stopover needs: hotel check-in, bathing, breakfast, lunch or dinner, pharmacy, ATM and drinking water.",
+          "For families: confirm room occupancy, extra beds and 24-hour reception directly with the property.",
+          "For early departures: arrange food or water beforehand because not every outlet will be open."
+        ]
+      },
+      {
+        id: "vehicle-selection",
+        title: "Which taxi should you choose for the Srisailam journey?",
+        paragraphs: [
+          "Choose the vehicle by usable seating and luggage—not passenger count alone. A group with large suitcases may need a bigger vehicle even when everyone technically fits in a smaller car. Mention senior citizens, children and mobility needs when booking."
+        ],
+        table: {
+          headers: ["Vehicle", "Suitable for", "Planning note"],
+          rows: [
+            ["Maruti Swift Dzire", "Couple or small family with moderate luggage", "Economical sedan option; explain luggage quantity before confirmation."],
+            ["Toyota Innova", "Family or medium group wanting more cabin space", "Useful for a longer journey and additional luggage."],
+            ["Toyota Innova Crysta", "Travellers prioritising comfort and space", "Premium MPV option, subject to availability."],
+            ["Mahindra Xylo", "Medium group with practical seating needs", "Confirm passenger count and luggage arrangement."],
+            ["Force Trax Toofan AC", "Larger pilgrim group travelling together", "Share the exact number of adults, children and bags before booking."]
+          ],
+          note: "Vehicle availability varies by date. The operator should confirm the assigned vehicle and quoted trip inclusions before travel."
+        }
+      },
+      {
+        id: "sample-travel-plan",
+        title: "A simple arrival plan for first-time pilgrims",
+        paragraphs: [
+          "A comfortable itinerary is more useful than a rushed one. First, book a train to Markapur Road Railway Station and note the correct arrival date. Second, reserve a suitable vehicle and share the complete ticket details. Third, decide whether your group needs a meal or hotel stop in Markapur. Fourth, allow approximately three hours plus a sensible buffer for the road journey. Finally, keep temple darshan, hotel check-in and sightseeing plans flexible enough to absorb a railway or road delay.",
+          "If you plan to return by train from MRK, arrange the Srisailam pickup with an additional safety margin. The return drive is affected by the same forest, weather, traffic and ghat-road conditions, and reaching the station early is better than planning a close connection."
+        ]
+      },
+      {
+        id: "fare-and-booking",
+        title: "Taxi fare and booking information",
+        paragraphs: [
+          "The final taxi fare depends on the vehicle, one-way or round-trip plan, pickup time, destination, sightseeing or waiting requirements, trip date and vehicle availability. Ask for a clear quotation for your exact journey instead of relying on an old online fare. Confirm what the quotation includes and whether parking, waiting, additional kilometres or extra stops can create another charge.",
+          "To request availability, call Markapur Taxi on 9491320241 or use the website booking form. Sharing complete information in the first message helps the team recommend the right vehicle and give a more accurate trip plan."
+        ],
+        bullets: [
+          "Required: travel date, train number, MRK arrival time and Srisailam drop point.",
+          "Passenger details: adults, children, senior citizens and any mobility assistance needed.",
+          "Luggage: number of large suitcases or unusually sized items.",
+          "Trip type: one-way, round trip, hotel stop, waiting or local Srisailam sightseeing.",
+          "Contact: passenger name and a phone number that will work on arrival."
+        ]
+      },
+      {
+        id: "practical-travel-tips",
+        title: "Practical tips for a comfortable and safe journey",
+        bullets: [
+          "Carry valid identification, essential medicines, water and light snacks in your cabin bag.",
+          "Use the seat belts provided and avoid pressuring the driver to speed on forest or ghat roads.",
+          "Keep children supervised during station pickup, food stops and viewpoints.",
+          "During weekends, festivals and Karthika Masam, expect greater demand for trains, taxis, rooms and darshan.",
+          "Check current weather and allow extra time during heavy rain or low visibility.",
+          "Confirm temple services and accommodation separately; a taxi booking does not include darshan or a hotel room unless specifically stated.",
+          "Save the booking contact and destination details offline because mobile coverage can be inconsistent on parts of the route."
+        ]
+      }
+    ],
+    internalLinks: [
+      { label: "Markapur Railway Station to Srisailam Taxi", url: "markapur-railway-station-to-srisailam-taxi", description: "Pickup service, vehicle choices and station-to-Srisailam booking." },
+      { label: "Markapur Road Train Timings", url: "markapur-train-timings", description: "Plan your MRK arrival and the details needed for station pickup." },
+      { label: "How to Reach Srisailam from Markapur", url: "how-to-reach-srisailam-from-markapur", description: "Compare taxi, bus and private-vehicle travel from Markapur." },
+      { label: "Hotels in Markapur", url: "hotels-in-markapur", description: "Accommodation guidance for late arrivals and stopovers." },
+      { label: "Home Made Food in Markapur", url: "home-made-food-in-markapur", description: "Simple meal guidance before the onward journey." },
+      { label: "North Indian Food in Markapur", url: "north-indian-food-in-markapur", description: "Food options for visitors looking for familiar dishes." },
+      { label: "Srisailam Temple Darshan Timings", url: "srisailam-temple-darshan-timings", description: "Plan the temple visit after allowing for road and rail delays." },
+      { label: "Places to Visit in Srisailam", url: "places-to-visit-in-srisailam", description: "Build a practical sightseeing plan around your darshan." }
+    ],
+    faqs: [
+      {
+        question: "Does Srisailam have a railway station?",
+        answer: "No. Srisailam does not have a railway station. Most rail passengers use Markapur Road Railway Station (MRK) and complete the remaining journey by road."
+      },
+      {
+        question: "Which is the nearest railway station to Srisailam?",
+        answer: "Markapur Road Railway Station (MRK) is the nearest practical railway station for most Srisailam travellers. It is approximately 85–90 km away by road."
+      },
+      {
+        question: "How far is Markapur Road Railway Station from Srisailam?",
+        answer: "The road distance is approximately 85–90 km, depending on the route and your exact destination in Srisailam."
+      },
+      {
+        question: "How long does it take from Markapur Road Railway Station to Srisailam?",
+        answer: "Allow about 2.5–3 hours for the road journey. Traffic, weather, stops and current forest-road conditions can make it longer."
+      },
+      {
+        question: "What is the route from Markapur Road Railway Station to Srisailam?",
+        answer: "The usual route goes from Markapur Road Railway Station through Markapur and Dornala, then across the Nallamala forest and ghat-road section to Srisailam."
+      },
+      {
+        question: "Can I get a taxi at Markapur Road Railway Station?",
+        answer: "Yes. A station pickup can be pre-booked. Advance booking is recommended for late arrivals, festival dates, families, groups and passengers needing a particular vehicle."
+      },
+      {
+        question: "Is a bus available from Markapur to Srisailam?",
+        answer: "Bus travel can be an option, but the departure point, waiting time, service frequency and seat availability can change. Allow time to reach the appropriate bus point from the railway station and confirm the current local schedule on arrival."
+      },
+      {
+        question: "What should I do for a late-night train arrival?",
+        answer: "Share the train details in advance and confirm current forest-road access conditions. If immediate onward travel is not practical, plan a Markapur hotel stop and continue after rest."
+      },
+      {
+        question: "Which vehicle is suitable for a family trip to Srisailam?",
+        answer: "A Swift Dzire can suit a small family with moderate luggage. Toyota Innova or Innova Crysta provides more space, while Xylo or Force Trax Toofan AC can suit larger groups. Confirm passenger and luggage details before booking."
+      },
+      {
+        question: "What details are needed to book a Markapur Road station pickup?",
+        answer: "Share the travel date, train number, expected MRK arrival, passenger count, luggage, destination, preferred vehicle and a working contact number."
+      },
+      {
+        question: "Is Markapur Road the nearest station for Mallikarjuna Temple?",
+        answer: "Yes, Markapur Road Railway Station is the nearest practical rail gateway commonly used for Sri Mallikarjuna Swamy Temple in Srisailam. The temple town is reached by road from MRK."
+      }
+    ]
+  },
+  {
     topic: "Guntur to Srisailam Taxi",
     url: "guntur-to-srisailam-taxi",
     seoTitle: "Guntur to Srisailam Taxi Service | Professional Drivers",

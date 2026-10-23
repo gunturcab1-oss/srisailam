@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SEO_PAGES } from '@/constants.tsx';
 import { Layout } from '@/components/Layout.tsx';
-import { ArrowLeft, Phone, ShieldCheck, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Phone, ShieldCheck, ChevronRight, CheckCircle2, CalendarDays } from 'lucide-react';
 import { motion } from 'motion/react';
 
 const SITE_URL = 'https://www.markapurtaxi.com';
@@ -166,30 +166,60 @@ const SEOPage: React.FC = () => {
     const schema = document.createElement('script');
     schema.id = schemaId;
     schema.type = 'application/ld+json';
+    const structuredData: Record<string, unknown>[] = [
+      {
+        '@type': 'WebPage',
+        '@id': `${canonical}#webpage`,
+        url: canonical,
+        name: page.seoTitle,
+        description: page.metaDescription,
+        dateModified: page.updatedAt,
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        about: [
+          { '@type': 'Place', name: 'Srisailam' },
+          { '@type': 'TrainStation', name: 'Markapur Road Railway Station', identifier: 'MRK' }
+        ]
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: page.topic, item: canonical }
+        ]
+      },
+      {
+        '@type': 'Service',
+        name: page.topic,
+        description: page.metaDescription,
+        url: canonical,
+        provider: {
+          '@type': 'TaxiService',
+          name: 'Markapur Taxi',
+          url: SITE_URL,
+          telephone: '+91-9491320241'
+        },
+        areaServed: ['Markapur', 'Srisailam']
+      }
+    ];
+
+    if (page.faqs?.length) {
+      structuredData.push({
+        '@type': 'FAQPage',
+        '@id': `${canonical}#faq`,
+        mainEntity: page.faqs.map(faq => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer
+          }
+        }))
+      });
+    }
+
     schema.text = JSON.stringify({
       '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-            { '@type': 'ListItem', position: 2, name: page.topic, item: canonical }
-          ]
-        },
-        {
-          '@type': 'Service',
-          name: page.topic,
-          description: page.metaDescription,
-          url: canonical,
-          provider: {
-            '@type': 'TaxiService',
-            name: 'Markapur Taxi',
-            url: SITE_URL,
-            telephone: '+91-9491320241'
-          },
-          areaServed: ['Markapur', 'Srisailam']
-        }
-      ]
+      '@graph': structuredData
     });
     document.head.appendChild(schema);
     window.scrollTo(0, 0);
@@ -232,10 +262,121 @@ const SEOPage: React.FC = () => {
 
             <h1 className="text-4xl md:text-6xl font-black mb-8 leading-tight">{page.topic}</h1>
 
+            {page.updatedAt && (
+              <p className="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 mb-8">
+                <CalendarDays size={17} aria-hidden="true" /> Last updated: {new Date(`${page.updatedAt}T00:00:00`).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </p>
+            )}
+
             <div className="prose prose-lg prose-yellow max-w-none text-gray-700 leading-relaxed mb-12">
               <p className="text-xl font-medium text-gray-900 mb-8">{page.metaDescription}</p>
-              <div className="whitespace-pre-wrap">{page.content}</div>
+              {page.content && <div className="whitespace-pre-wrap">{page.content}</div>}
             </div>
+
+            {page.sections && page.sections.length > 3 ? (
+              <nav aria-labelledby="on-this-page" className="mb-14 rounded-3xl border border-gray-200 bg-gray-50 p-7 md:p-9">
+                <h2 id="on-this-page" className="text-2xl font-black mb-5">On this page</h2>
+                <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 list-decimal list-inside text-gray-700">
+                  {page.sections.map(section => (
+                    <li key={section.id} className="leading-relaxed">
+                      <a href={`#${section.id}`} className="font-semibold hover:text-yellow-700 hover:underline">{section.title}</a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            ) : null}
+
+            {page.quickFacts?.length ? (
+              <section aria-labelledby="quick-facts" className="mb-14">
+                <h2 id="quick-facts" className="text-3xl font-black mb-6">Quick answer</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {page.quickFacts.map(fact => (
+                    <div key={fact.label} className="bg-yellow-50 border border-yellow-100 rounded-2xl p-5">
+                      <p className="text-xs font-black uppercase tracking-wider text-yellow-800 mb-2">{fact.label}</p>
+                      <p className="text-lg font-bold text-gray-900">{fact.value}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {page.sections?.map(section => (
+              <section key={section.id} aria-labelledby={section.id} className="mb-14 scroll-mt-28">
+                <h2 id={section.id} className="text-3xl font-black mb-5 leading-tight">{section.title}</h2>
+
+                {section.paragraphs?.map((paragraph, index) => (
+                  <p key={`${section.id}-paragraph-${index}`} className="text-lg text-gray-700 leading-relaxed mb-5">{paragraph}</p>
+                ))}
+
+                {section.bullets?.length ? (
+                  <ul className="space-y-3 mb-6">
+                    {section.bullets.map((bullet, index) => (
+                      <li key={`${section.id}-bullet-${index}`} className="flex items-start gap-3 text-gray-700 leading-relaxed">
+                        <CheckCircle2 size={20} className="text-yellow-600 shrink-0 mt-1" aria-hidden="true" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                {section.table && (
+                  <div className="mt-7">
+                    {section.table.title && <h3 className="text-xl font-black mb-4">{section.table.title}</h3>}
+                    <div className="overflow-x-auto rounded-2xl border border-gray-200">
+                      <table className="w-full min-w-[680px] text-left text-sm">
+                        <thead className="bg-gray-950 text-white">
+                          <tr>
+                            {section.table.headers.map(header => <th key={header} scope="col" className="p-4">{header}</th>)}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.table.rows.map((row, rowIndex) => (
+                            <tr key={`${section.id}-row-${rowIndex}`} className="border-t border-gray-100 even:bg-gray-50">
+                              {row.map((cell, cellIndex) => (
+                                <td key={`${section.id}-cell-${rowIndex}-${cellIndex}`} className={`p-4 align-top ${cellIndex === 0 ? 'font-bold text-gray-900' : 'text-gray-700'}`}>{cell}</td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    {section.table.note && <p className="text-sm text-gray-500 mt-3">{section.table.note}</p>}
+                  </div>
+                )}
+              </section>
+            ))}
+
+            {page.internalLinks?.length ? (
+              <section aria-labelledby="planning-links" className="mb-14 bg-gray-50 p-7 md:p-9 rounded-3xl border border-gray-100">
+                <h2 id="planning-links" className="text-3xl font-black mb-3">Continue planning your journey</h2>
+                <p className="text-gray-600 mb-6">Use these detailed Markapur and Srisailam guides for the next part of your trip.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {page.internalLinks.map(item => (
+                    <Link key={item.url} to={`/${item.url}`} className="bg-white p-5 rounded-2xl border border-gray-200 hover:border-yellow-400 hover:shadow-md transition-all">
+                      <span className="font-black text-gray-900 block mb-1">{item.label}</span>
+                      {item.description && <span className="text-sm text-gray-600 leading-relaxed">{item.description}</span>}
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {page.faqs?.length ? (
+              <section aria-labelledby="frequently-asked-questions" className="mb-14">
+                <h2 id="frequently-asked-questions" className="text-3xl font-black mb-6">Frequently asked questions</h2>
+                <div className="space-y-4">
+                  {page.faqs.map(faq => (
+                    <details key={faq.question} className="group rounded-2xl border border-gray-200 bg-white p-5 open:border-yellow-400">
+                      <summary className="cursor-pointer list-none font-black text-lg flex items-center justify-between gap-4">
+                        {faq.question}
+                        <span aria-hidden="true" className="text-yellow-700 text-2xl leading-none group-open:rotate-45 transition-transform">+</span>
+                      </summary>
+                      <p className="mt-4 text-gray-700 leading-relaxed">{faq.answer}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            ) : null}
 
             {CITY_GUIDE_URLS.has(page.url) && (
               <>
