@@ -100,13 +100,13 @@ const Footer: React.FC = () => {
         <div className="bg-black rounded-[4rem] p-12 md:p-20 text-white flex flex-col md:flex-row justify-between items-center gap-12 mb-24">
           <div className="text-center md:text-left">
             <h2 className="text-4xl md:text-6xl font-black mb-6">Coming to Markapur <br className="hidden md:block"/> Road Station?</h2>
-            <p className="text-gray-400 text-xl font-light">We track your train and wait for you. Call for instant pickup.</p>
+            <p className="text-gray-400 text-xl font-light">Share your train details for a planned Markapur Road station pickup.</p>
           </div>
           <div className="flex flex-col gap-4 w-full md:w-auto">
             <a href="tel:+919491320241" className="bg-yellow-400 text-black px-12 py-6 rounded-3xl font-black text-2xl text-center hover:bg-yellow-500 transition-all shadow-2xl">
               9491320241
             </a>
-            <p className="text-center text-gray-500 text-sm font-bold uppercase tracking-widest underline decoration-yellow-400 underline-offset-4">Available 24/7</p>
+            <p className="text-center text-gray-500 text-sm font-bold uppercase tracking-widest underline decoration-yellow-400 underline-offset-4">Advance booking recommended</p>
           </div>
         </div>
         
